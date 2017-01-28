@@ -1,0 +1,45 @@
+{
+  "matches": [
+    {
+      "count": 114,
+      "value": "webcam"
+    },
+    {
+      "count": 85,
+      "value": "camera"
+    },
+    {
+      "count": 85,
+      "value": "cam"
+    },
+    {
+      "count": 73,
+      "value": "scada"
+    },
+    {
+      "count": 58,
+      "value": "router"
+    },
+    {
+      "count": 57,
+      "value": "ftp"
+    },
+    {
+      "count": 47,
+      "value": "test"
+    },
+    {
+      "count": 36,
+      "value": "http"
+    },
+    {
+      "count": 33,
+      "value": "ip"
+    },
+    {
+      "count": 31,
+      "value": "1"
+    }
+  ],
+  "total": 4761
+}

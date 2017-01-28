@@ -1,0 +1,22 @@
+group 'com.fooock'
+version '1.0.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile "io.reactivex.rxjava2:rxjava:2.0.4"
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+
+    testCompile 'junit:junit:4.11'
+    testCompile "org.mockito:mockito-core:2.6.2"
+    testCompile 'com.squareup.retrofit2:retrofit-mock:2.1.0'
+
+}

@@ -1,0 +1,141 @@
+{
+  "region_code": "06",
+  "tags": [],
+  "ip": 689306026,
+  "area_code": null,
+  "latitude": -26.183300000000003,
+  "hostnames": [],
+  "postal_code": "1501",
+  "dma_code": null,
+  "country_code": "ZA",
+  "org": "Vodacom",
+  "data": [
+    {
+      "product": "Siemens HiPath 3000 telnetd",
+      "hash": -1418446436,
+      "ip": 689306026,
+      "isp": "Vodacom",
+      "transport": "tcp",
+      "data": "\r************************\n\r*  HiPath 3000 Telnet  *\n\r*  ------------------  *\n\r*                      *\n\r*  Adjust the Telnet   *\n\r*  window to the       *\n\r*  visible frame       *\n\r*                      *\n\r************************\n\r",
+      "asn": "AS36994",
+      "port": 23,
+      "hostnames": [],
+      "devicetype": "firewall",
+      "location": {
+        "city": "Benoni",
+        "region_code": "06",
+        "area_code": null,
+        "longitude": 28.316699999999997,
+        "country_code3": "ZAF",
+        "latitude": -26.183300000000003,
+        "postal_code": "1501",
+        "dma_code": null,
+        "country_code": "ZA",
+        "country_name": "South Africa"
+      },
+      "timestamp": "2017-01-24T12:18:46.887139",
+      "domains": [],
+      "org": "Vodacom",
+      "os": null,
+      "_shodan": {
+        "crawler": "5faf2928ceb560cb4276cc1b4660b2d763cc6397",
+        "id": null,
+        "module": "telnet",
+        "options": {}
+      },
+      "opts": {
+        "telnet": {
+          "will": [],
+          "do": [],
+          "dont": [],
+          "wont": []
+        }
+      },
+      "ip_str": "41.21.249.170"
+    },
+    {
+      "hash": -795816946,
+      "ip": 689306026,
+      "isp": "Vodacom",
+      "transport": "udp",
+      "data": "\\x00\\x05\\x00\\x01File not found.\\x00",
+      "asn": "AS36994",
+      "port": 1034,
+      "hostnames": [],
+      "location": {
+        "city": null,
+        "region_code": null,
+        "area_code": null,
+        "longitude": 24,
+        "country_code3": "ZAF",
+        "latitude": -29,
+        "postal_code": null,
+        "dma_code": null,
+        "country_code": "ZA",
+        "country_name": "South Africa"
+      },
+      "timestamp": "2017-01-14T22:14:38.842749",
+      "domains": [],
+      "org": "Vodacom",
+      "os": null,
+      "_shodan": {
+        "crawler": "8cd926590a400feb4b683f8337a77287ddf3d2c7",
+        "id": null,
+        "module": "bittorrent-tracker",
+        "options": {}
+      },
+      "opts": {
+        "raw": "0005000146696c65206e6f7420666f756e642e00"
+      },
+      "ip_str": "41.21.249.170"
+    },
+    {
+      "hash": -1563800593,
+      "ip": 689306026,
+      "isp": "Vodacom",
+      "transport": "udp",
+      "data": "SNMP agent for HiPath 3000/5000 V5.x",
+      "asn": "AS36994",
+      "port": 161,
+      "hostnames": [],
+      "location": {
+        "city": null,
+        "region_code": null,
+        "area_code": null,
+        "longitude": 24,
+        "country_code3": "ZAF",
+        "latitude": -29,
+        "postal_code": null,
+        "dma_code": null,
+        "country_code": "ZA",
+        "country_name": "South Africa"
+      },
+      "timestamp": "2017-01-08T14:14:07.092415",
+      "domains": [],
+      "org": "Vodacom",
+      "os": null,
+      "_shodan": {
+        "crawler": "545144fc95e7a7ef13ece5dbceb98ee386b37950",
+        "id": null,
+        "module": "snmp",
+        "options": {}
+      },
+      "opts": {},
+      "ip_str": "41.21.249.170"
+    }
+  ],
+  "asn": "AS36994",
+  "city": "Benoni",
+  "isp": "Vodacom",
+  "longitude": 28.316699999999997,
+  "last_update": "2017-01-24T12:18:46.887139",
+  "country_code3": "ZAF",
+  "country_name": "South Africa",
+  "ip_str": "41.21.249.170",
+  "os": null,
+  "ports": [
+    23,
+    1034,
+    161
+  ]
+}

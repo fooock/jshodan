@@ -1,0 +1,30 @@
+{
+  "region_code": "06",
+  "tags": [],
+  "ip": 689306026,
+  "area_code": null,
+  "latitude": -26.183300000000003,
+  "hostnames": [],
+  "postal_code": "1501",
+  "dma_code": null,
+  "country_code": "ZA",
+  "org": "Vodacom",
+  "data": [],
+  "asn": "AS36994",
+  "city": "Benoni",
+  "isp": "Vodacom",
+  "longitude": 28.316699999999997,
+  "last_update": "2017-01-24T12:18:46.887139",
+  "country_code3": "ZAF",
+  "country_name": "South Africa",
+  "ip_str": "41.21.249.170",
+  "os": null,
+  "ports": [
+    23,
+    1034,
+    161,
+    1027,
+    1028,
+    1068
+  ]
+}
