@@ -3,9 +3,7 @@ language: java
 jdk:
   - oraclejdk8
 
-sudo: false  # as per http://blog.travis-ci.com/2014-12-17-faster-builds-with-container-based-infrastructure/
-
-before_script:
+before_install:
   - chmod +x gradlew
 
 # see https://docs.travis-ci.com/user/languages/java/#Caching
@@ -17,6 +15,4 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 
-# Don't run integrationTests as they require a live Ethereum client to be running
-# Add --info to view details of test failures
 script: ./gradlew check
