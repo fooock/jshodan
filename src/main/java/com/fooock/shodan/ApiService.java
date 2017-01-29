@@ -62,7 +62,7 @@ public interface ApiService {
                                     @Query("order") String order);
 
     /**
-     * Use this method to queries the directory of queries queries that users have saved in Shodan. For default
+     * Use this method to queries the directory of queries that users have saved in Shodan. For default
      * this method only return the first ten queries
      *
      * @param apiKey account api key
@@ -73,7 +73,7 @@ public interface ApiService {
     Observable<QueryReport> searches(@Query("key") String apiKey, @Query("query") String query);
 
     /**
-     * Use this method to queries the directory of queries queries that users have saved in Shodan.
+     * Use this method to queries the directory of queries that users have saved in Shodan.
      *
      * @param apiKey account api key
      * @param query  What to queries for in the directory of saved queries queries.
@@ -84,7 +84,7 @@ public interface ApiService {
     Observable<QueryReport> searches(@Query("key") String apiKey, @Query("query") String query, @Query("page") int page);
 
     /**
-     * Use this method to obtain a list of popular tags for the saved queries queries in Shodan. This method only
+     * Use this method to obtain a list of popular tags for the saved queries in Shodan. This method only
      * return the first ten tags
      *
      * @param apiKey account api key
@@ -94,7 +94,7 @@ public interface ApiService {
     Observable<TagReport> tags(@Query("key") String apiKey);
 
     /**
-     * Use this method to obtain a list of popular tags for the saved queries queries in Shodan.
+     * Use this method to obtain a list of popular tags for the saved queries in Shodan.
      *
      * @param apiKey    account api key
      * @param tagNumber The number of tags to return (default 10).
@@ -134,7 +134,7 @@ public interface ApiService {
      * @param apiKey  account api key
      * @param history True if all historical banners should be returned (default false)
      * @param minify  True to only return the list of ports and the general host information, no banners (default false)
-     * @return
+     * @return {@link Observable<Host>}
      */
     @GET("shodan/host/{ip}")
     Observable<Host> host(@Path("ip") String ip,

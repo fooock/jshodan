@@ -14,7 +14,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 /**
- *
+ * Class to create the three different services that Shodan supports
  */
 class ServiceCreator {
 
@@ -30,18 +30,41 @@ class ServiceCreator {
         }
     }
 
+    /**
+     * Shodan rest API
+     *
+     * @return {@link ApiService}
+     */
     ApiService getRestService() {
         return createService(ApiService.class, SHODAN_REST_API_URL);
     }
 
+    /**
+     * Shodan streaming API
+     *
+     * @return {@link StreamingService}
+     */
     StreamingService getStreamingService() {
         return createService(StreamingService.class, SHODAN_STREAMING_API_URL);
     }
 
+    /**
+     * Shodan exploit API
+     *
+     * @return {@link ExploitService}
+     */
     ExploitService getExploitService() {
         return createService(ExploitService.class, SHODAN_EXPLOIT_API_URL);
     }
 
+    /**
+     * Method to create a service
+     *
+     * @param clazz   service class
+     * @param baseUrl base url for the service
+     * @param <T>     type of service
+     * @return service implementation
+     */
     private static <T> T createService(Class<T> clazz, String baseUrl) {
         Type exploitType = new TypeToken<List<Exploit>>() {
         }.getType();
