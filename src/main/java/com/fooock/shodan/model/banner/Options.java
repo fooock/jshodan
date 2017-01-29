@@ -1,4 +1,4 @@
-package com.fooock.shodan.model;
+package com.fooock.shodan.model.banner;
 
 /**
  * This class is not completed, more info is needed

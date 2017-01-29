@@ -1,6 +1,6 @@
 package com.fooock.shodan;
 
-import com.fooock.shodan.model.Banner;
+import com.fooock.shodan.model.banner.Banner;
 import com.fooock.shodan.model.banner.BannerReport;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

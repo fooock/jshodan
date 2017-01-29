@@ -1,5 +1,6 @@
 package com.fooock.shodan.model;
 
+import com.fooock.shodan.model.banner.Banner;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
