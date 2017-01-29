@@ -5,6 +5,9 @@ jdk:
 
 sudo: false  # as per http://blog.travis-ci.com/2014-12-17-faster-builds-with-container-based-infrastructure/
 
+before_script:
+  - chmod +x gradlew
+
 # see https://docs.travis-ci.com/user/languages/java/#Caching
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
