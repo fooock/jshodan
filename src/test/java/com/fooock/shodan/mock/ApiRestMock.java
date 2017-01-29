@@ -2,7 +2,7 @@ package com.fooock.shodan.mock;
 
 import com.fooock.shodan.ApiService;
 import com.fooock.shodan.ReadJson;
-import com.fooock.shodan.model.Host;
+import com.fooock.shodan.model.host.Host;
 import com.fooock.shodan.model.query.QueryReport;
 import com.fooock.shodan.model.tag.TagReport;
 import com.fooock.shodan.model.user.Account;

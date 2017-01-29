@@ -1,7 +1,7 @@
 package com.fooock.shodan;
 
 import com.fooock.shodan.mock.ApiRestMock;
-import com.fooock.shodan.model.Host;
+import com.fooock.shodan.model.host.Host;
 import com.fooock.shodan.model.query.QueryReport;
 import com.fooock.shodan.model.tag.TagReport;
 import com.fooock.shodan.model.user.Account;
