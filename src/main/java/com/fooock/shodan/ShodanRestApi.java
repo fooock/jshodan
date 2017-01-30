@@ -3,6 +3,7 @@ package com.fooock.shodan;
 import com.fooock.shodan.model.host.Host;
 import com.fooock.shodan.model.query.QueryReport;
 import com.fooock.shodan.model.tag.TagReport;
+import com.fooock.shodan.model.token.TokenReport;
 import com.fooock.shodan.model.user.Account;
 import com.fooock.shodan.model.user.ApiStatus;
 import rx.Observable;
@@ -26,6 +27,21 @@ public final class ShodanRestApi extends AbstractApi {
     public ShodanRestApi(String apiKey) {
         super(apiKey);
         this.apiService = serviceCreator.getRestService();
+    }
+
+    /**
+     * This method lets you determine which filters are being used by the query string and what parameters
+     * were provided to the filters.
+     *
+     * @param query Shodan search query. The provided string is used to search the database of banners in Shodan,
+     *              with the additional option to provide filters inside the search query using a "filter:value" format.
+     * @return {@link Observable<TokenReport>}
+     */
+    public Observable<TokenReport> tokens(String query) {
+        if (query == null || query.isEmpty()) {
+            throw new IllegalArgumentException("Query can't be null or empty");
+        }
+        return apiService.tokens(apiKey, query);
     }
 
     /**

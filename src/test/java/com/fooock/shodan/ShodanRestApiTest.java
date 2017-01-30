@@ -54,4 +54,10 @@ public class ShodanRestApiTest {
         ShodanRestApi restApi = new ShodanRestApi("1234567890");
         restApi.queries(1, "votes", "bbb");
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testTokensFail() throws Exception {
+        ShodanRestApi restApi = new ShodanRestApi("1234567890");
+        restApi.tokens("");
+    }
 }

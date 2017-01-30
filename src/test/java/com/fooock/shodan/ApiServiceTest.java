@@ -4,6 +4,7 @@ import com.fooock.shodan.mock.ApiRestMock;
 import com.fooock.shodan.model.host.Host;
 import com.fooock.shodan.model.query.QueryReport;
 import com.fooock.shodan.model.tag.TagReport;
+import com.fooock.shodan.model.token.TokenReport;
 import com.fooock.shodan.model.user.Account;
 import com.fooock.shodan.model.user.ApiStatus;
 import org.junit.Before;
@@ -130,6 +131,16 @@ public class ApiServiceTest {
         TestSubscriber<QueryReport> subscriber = new TestSubscriber<>();
 
         apiRestMock.searches(apiKey, "webcam").subscribe(subscriber);
+
+        subscriber.assertCompleted();
+        subscriber.assertNoErrors();
+    }
+
+    @Test
+    public void testTokensSuccess() throws Exception {
+        TestSubscriber<TokenReport> subscriber = new TestSubscriber<>();
+
+        apiRestMock.tokens(apiKey, "apache country:DE port:1234").subscribe(subscriber);
 
         subscriber.assertCompleted();
         subscriber.assertNoErrors();

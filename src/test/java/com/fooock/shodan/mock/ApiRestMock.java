@@ -5,6 +5,7 @@ import com.fooock.shodan.ReadJson;
 import com.fooock.shodan.model.host.Host;
 import com.fooock.shodan.model.query.QueryReport;
 import com.fooock.shodan.model.tag.TagReport;
+import com.fooock.shodan.model.token.TokenReport;
 import com.fooock.shodan.model.user.Account;
 import com.fooock.shodan.model.user.ApiStatus;
 import com.google.gson.Gson;
@@ -23,6 +24,12 @@ public class ApiRestMock implements ApiService {
 
     public ApiRestMock(BehaviorDelegate<ApiService> behaviorDelegate) {
         this.behaviorDelegate = behaviorDelegate;
+    }
+
+    @Override
+    public Observable<TokenReport> tokens(@Query("key") String apiKey, @Query("query") String query) {
+        TokenReport tokenReport = gson.fromJson(ReadJson.readFile("search_token.json"), TokenReport.class);
+        return behaviorDelegate.returningResponse(tokenReport).tokens(apiKey, query);
     }
 
     @Override
