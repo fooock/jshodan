@@ -23,7 +23,7 @@ public interface StreamingService {
      * @return {@link Observable<List<Banner>>}
      */
     @GET("shodan/banners")
-    Observable<BannerReport> banners(@Query("key") String apiKey);
+    Observable<BannerReport> banners(@Query(Constants.KEY) String apiKey);
 
     /**
      * This stream provides a filtered, bandwidth-saving view of the Banners stream in case you are only
@@ -34,7 +34,7 @@ public interface StreamingService {
      * @return {@link Observable<List<Banner>>}
      */
     @GET("shodan/asn/{asn}")
-    Observable<BannerReport> bannersByAsn(@Path("asn") String asn, @Query("key") String apiKey);
+    Observable<BannerReport> bannersByAsn(@Path(Constants.ASN) String asn, @Query(Constants.KEY) String apiKey);
 
     /**
      * This stream provides a filtered, bandwidth-saving view of the Banners stream in case you are only
@@ -45,7 +45,8 @@ public interface StreamingService {
      * @return {@link Observable<List<Banner>>}
      */
     @GET("shodan/countries/{countries}")
-    Observable<BannerReport> bannersByCountries(@Path("countries") String countries, @Query("key") String apiKey);
+    Observable<BannerReport> bannersByCountries(@Path(Constants.COUNTRIES) String countries,
+                                                @Query(Constants.KEY) String apiKey);
 
     /**
      * Only returns banner data for the list of specified ports. This stream provides a filtered, bandwidth-saving
@@ -56,6 +57,6 @@ public interface StreamingService {
      * @return {@link Observable<List<Banner>>}
      */
     @GET("shodan/ports/{ports}")
-    Observable<BannerReport> bannersByPorts(@Path("ports") String ports, @Query("key") String apiKey);
+    Observable<BannerReport> bannersByPorts(@Path(Constants.PORTS) String ports, @Query(Constants.KEY) String apiKey);
 
 }

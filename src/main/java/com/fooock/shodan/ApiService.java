@@ -27,7 +27,7 @@ public interface ApiService {
      * @return {@link Observable<TokenReport>}
      */
     @GET("shodan/host/search/tokens")
-    Observable<TokenReport> tokens(@Query("key") String apiKey, @Query("query") String query);
+    Observable<TokenReport> tokens(@Query(Constants.KEY) String apiKey, @Query(Constants.QUERY) String query);
 
     /**
      * Use this method to obtain a list of search queries that users have saved in Shodan.
@@ -36,7 +36,7 @@ public interface ApiService {
      * @return {@link Observable<QueryReport>}
      */
     @GET("shodan/query")
-    Observable<QueryReport> queries(@Query("key") String apiKey);
+    Observable<QueryReport> queries(@Query(Constants.KEY) String apiKey);
 
     /**
      * Use this method to obtain a list of search queries that users have saved in Shodan.
@@ -46,7 +46,7 @@ public interface ApiService {
      * @return {@link Observable<QueryReport>}
      */
     @GET("shodan/query")
-    Observable<QueryReport> queries(@Query("key") String apiKey, @Query("page") int page);
+    Observable<QueryReport> queries(@Query(Constants.KEY) String apiKey, @Query(Constants.PAGE) int page);
 
     /**
      * Use this method to obtain a list of search queries that users have saved in Shodan.
@@ -57,7 +57,9 @@ public interface ApiService {
      * @return {@link Observable<QueryReport>}
      */
     @GET("shodan/query")
-    Observable<QueryReport> queries(@Query("key") String apiKey, @Query("page") int page, @Query("sort") String sort);
+    Observable<QueryReport> queries(@Query(Constants.KEY) String apiKey,
+                                    @Query(Constants.PAGE) int page,
+                                    @Query(Constants.SORT) String sort);
 
     /**
      * Use this method to obtain a list of search queries that users have saved in Shodan.
@@ -69,10 +71,10 @@ public interface ApiService {
      * @return {@link Observable<QueryReport>}
      */
     @GET("shodan/query")
-    Observable<QueryReport> queries(@Query("key") String apiKey,
-                                    @Query("page") int page,
-                                    @Query("sort") String sort,
-                                    @Query("order") String order);
+    Observable<QueryReport> queries(@Query(Constants.KEY) String apiKey,
+                                    @Query(Constants.PAGE) int page,
+                                    @Query(Constants.SORT) String sort,
+                                    @Query(Constants.ORDER) String order);
 
     /**
      * Use this method to queries the directory of queries that users have saved in Shodan. For default
@@ -83,7 +85,7 @@ public interface ApiService {
      * @return {@link Observable<QueryReport>}
      */
     @GET("shodan/query/search")
-    Observable<QueryReport> searches(@Query("key") String apiKey, @Query("query") String query);
+    Observable<QueryReport> searches(@Query(Constants.KEY) String apiKey, @Query(Constants.QUERY) String query);
 
     /**
      * Use this method to queries the directory of queries that users have saved in Shodan.
@@ -94,7 +96,9 @@ public interface ApiService {
      * @return {@link Observable<QueryReport>}
      */
     @GET("shodan/query/search")
-    Observable<QueryReport> searches(@Query("key") String apiKey, @Query("query") String query, @Query("page") int page);
+    Observable<QueryReport> searches(@Query(Constants.KEY) String apiKey,
+                                     @Query(Constants.QUERY) String query,
+                                     @Query(Constants.PAGE) int page);
 
     /**
      * Use this method to obtain a list of popular tags for the saved queries in Shodan. This method only
@@ -104,7 +108,7 @@ public interface ApiService {
      * @return {@link Observable<TagReport>}
      */
     @GET("shodan/query/tags")
-    Observable<TagReport> tags(@Query("key") String apiKey);
+    Observable<TagReport> tags(@Query(Constants.KEY) String apiKey);
 
     /**
      * Use this method to obtain a list of popular tags for the saved queries in Shodan.
@@ -114,7 +118,7 @@ public interface ApiService {
      * @return {@link Observable<TagReport>}
      */
     @GET("shodan/query/tags")
-    Observable<TagReport> tags(@Query("key") String apiKey, @Query("size") int tagNumber);
+    Observable<TagReport> tags(@Query(Constants.KEY) String apiKey, @Query(Constants.SIZE) int tagNumber);
 
     /**
      * Returns all services that have been found on the given host IP.
@@ -124,7 +128,7 @@ public interface ApiService {
      * @return {@link Observable<Host>}
      */
     @GET("shodan/host/{ip}")
-    Observable<Host> host(@Path("ip") String ip, @Query("key") String apiKey);
+    Observable<Host> host(@Path(Constants.IP) String ip, @Query(Constants.KEY) String apiKey);
 
     /**
      * Returns all services that have been found on the given host IP with all historical data if the
@@ -136,7 +140,9 @@ public interface ApiService {
      * @return {@link Observable<Host>}
      */
     @GET("shodan/host/{ip}")
-    Observable<Host> host(@Path("ip") String ip, @Query("key") String apiKey, @Query("history") boolean history);
+    Observable<Host> host(@Path(Constants.IP) String ip,
+                          @Query(Constants.KEY) String apiKey,
+                          @Query(Constants.HISTORY) boolean history);
 
     /**
      * Returns all services that have been found on the given host IP. If the minify param is true this method
@@ -150,10 +156,10 @@ public interface ApiService {
      * @return {@link Observable<Host>}
      */
     @GET("shodan/host/{ip}")
-    Observable<Host> host(@Path("ip") String ip,
-                          @Query("key") String apiKey,
-                          @Query("history") boolean history,
-                          @Query("minify") boolean minify);
+    Observable<Host> host(@Path(Constants.IP) String ip,
+                          @Query(Constants.KEY) String apiKey,
+                          @Query(Constants.HISTORY) boolean history,
+                          @Query(Constants.MINIFY) boolean minify);
 
     /**
      * Returns information about the Shodan account linked to the api key.
@@ -162,7 +168,7 @@ public interface ApiService {
      * @return {@link Observable<Account>}
      */
     @GET("account/profile")
-    Observable<Account> account(@Query("key") String apiKey);
+    Observable<Account> account(@Query(Constants.KEY) String apiKey);
 
     /**
      * Returns information about the API plan belonging to the given API key.
@@ -171,7 +177,7 @@ public interface ApiService {
      * @return {@link Observable<ApiStatus>}
      */
     @GET("api-info")
-    Observable<ApiStatus> info(@Query("key") String apiKey);
+    Observable<ApiStatus> info(@Query(Constants.KEY) String apiKey);
 
     /**
      * Get your current IP address as seen from the Internet.
@@ -180,7 +186,7 @@ public interface ApiService {
      * @return {@link Observable<String>}
      */
     @GET("tools/myip")
-    Observable<String> ip(@Query("key") String apiKey);
+    Observable<String> ip(@Query(Constants.KEY) String apiKey);
 
     /**
      * Calculates a honeypot probability score ranging from 0 (not a honeypot) to 1.0 (is a honeypot).
@@ -190,5 +196,5 @@ public interface ApiService {
      * @return {@link Observable<Float>}
      */
     @GET("labs/honeyscore/{ip}")
-    Observable<Float> honeyScore(@Path("ip") String ip, @Query("key") String apiKey);
+    Observable<Float> honeyScore(@Path(Constants.IP) String ip, @Query(Constants.KEY) String apiKey);
 }
