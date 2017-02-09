@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- *
+ * Contains a list of {@link Banner}s
  */
 public class BannerReport {
 
@@ -19,10 +19,16 @@ public class BannerReport {
         this.banners = banners;
     }
 
+    /**
+     * @return Total number of retrieved banners
+     */
     public int getTotal() {
         return total;
     }
 
+    /**
+     * @return List of {@link Banner}s
+     */
     public List<Banner> getBanners() {
         return banners;
     }

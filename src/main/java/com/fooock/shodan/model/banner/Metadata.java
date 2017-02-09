@@ -1,7 +1,7 @@
 package com.fooock.shodan.model.banner;
 
 /**
- *
+ * Shodan banner metadata
  */
 public class Metadata {
 
