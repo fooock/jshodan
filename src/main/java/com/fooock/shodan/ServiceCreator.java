@@ -1,5 +1,9 @@
 package com.fooock.shodan;
 
+import com.fooock.shodan.model.dns.DnsHostname;
+import com.fooock.shodan.model.dns.DnsHostnameDeserializer;
+import com.fooock.shodan.model.dns.DnsIp;
+import com.fooock.shodan.model.dns.DnsIpDeserializer;
 import com.fooock.shodan.model.exploit.Exploit;
 import com.fooock.shodan.model.exploit.ExploitDeserializer;
 import com.google.gson.Gson;
@@ -68,7 +72,18 @@ class ServiceCreator {
     private static <T> T createService(Class<T> clazz, String baseUrl) {
         Type exploitType = new TypeToken<List<Exploit>>() {
         }.getType();
-        Gson gson = new GsonBuilder().registerTypeAdapter(exploitType, new ExploitDeserializer()).create();
+
+        Type dnsIpType = new TypeToken<List<DnsIp>>() {
+        }.getType();
+
+        Type dnsHostnameType = new TypeToken<List<DnsHostname>>() {
+        }.getType();
+
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(exploitType, new ExploitDeserializer())
+                .registerTypeAdapter(dnsIpType, new DnsIpDeserializer())
+                .registerTypeAdapter(dnsHostnameType, new DnsHostnameDeserializer())
+                .create();
 
         final Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)

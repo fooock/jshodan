@@ -1,5 +1,7 @@
 package com.fooock.shodan;
 
+import com.fooock.shodan.model.dns.DnsHostname;
+import com.fooock.shodan.model.dns.DnsIp;
 import com.fooock.shodan.model.host.Host;
 import com.fooock.shodan.model.query.QueryReport;
 import com.fooock.shodan.model.tag.TagReport;
@@ -29,6 +31,32 @@ public final class ShodanRestApi extends AbstractApi {
     public ShodanRestApi(String apiKey) {
         super(apiKey);
         this.apiService = serviceCreator.getRestService();
+    }
+
+    /**
+     * Look up the hostnames that have been defined for the given list of IP addresses.
+     *
+     * @param ips Comma-separated list of IP addresses; example "74.125.227.230,204.79.197.200"
+     * @return {@link Observable<List<DnsHostname>>}
+     */
+    public Observable<List<DnsHostname>> reverseDns(String ips) {
+        if (ips == null || ips.isEmpty()) {
+            throw new IllegalArgumentException("Ip's can't be null or empty");
+        }
+        return apiService.reverseDns(apiKey, ips);
+    }
+
+    /**
+     * Look up the IP address for the provided list of hostnames.
+     *
+     * @param hostnames Comma-separated list of hostnames; example "google.com,bing.com"
+     * @return {@link Observable<List<DnsIp>>}
+     */
+    public Observable<List<DnsIp>> resolveDns(String hostnames) {
+        if (hostnames == null || hostnames.isEmpty()) {
+            throw new IllegalArgumentException("Hostnames can't be null or empty");
+        }
+        return apiService.resolveDns(apiKey, hostnames);
     }
 
     /**

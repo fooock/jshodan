@@ -1,5 +1,7 @@
 package com.fooock.shodan;
 
+import com.fooock.shodan.model.dns.DnsHostname;
+import com.fooock.shodan.model.dns.DnsIp;
 import com.fooock.shodan.model.host.Host;
 import com.fooock.shodan.model.query.QueryReport;
 import com.fooock.shodan.model.tag.TagReport;
@@ -18,6 +20,28 @@ import java.util.List;
  * of utility methods to make developing easier
  */
 public interface ApiService {
+
+    /**
+     * Look up the hostnames that have been defined for the given list of IP addresses.
+     *
+     * @param apiKey account api key
+     * @param ips    Comma-separated list of IP addresses; example "74.125.227.230,204.79.197.200"
+     * @return {@link Observable<List<DnsHostname>>}
+     */
+    @GET("dns/reverse")
+    Observable<List<DnsHostname>> reverseDns(@Query(Constants.KEY) String apiKey,
+                                             @Query(Constants.IPS) String ips);
+
+    /**
+     * Look up the IP address for the provided list of hostnames.
+     *
+     * @param apiKey    account api key
+     * @param hostnames Comma-separated list of hostnames; example "google.com,bing.com"
+     * @return {@link Observable<List<DnsIp>>}
+     */
+    @GET("dns/resolve")
+    Observable<List<DnsIp>> resolveDns(@Query(Constants.KEY) String apiKey,
+                                       @Query(Constants.HOSTNAMES) String hostnames);
 
     /**
      * This method returns a list of port numbers that the crawlers are looking for.

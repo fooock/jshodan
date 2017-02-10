@@ -19,4 +19,6 @@ final class Constants {
     static final String MINIFY = "minify";
     static final String SIZE = "size";
     static final String ID = "id";
+    static final String HOSTNAMES = "hostnames";
+    static final String IPS = "ips";
 }
