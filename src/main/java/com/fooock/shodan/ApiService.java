@@ -11,11 +11,22 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
+import java.util.List;
+
 /**
  * This API provides methods to queries Shodan, look up hosts, get summary information on queries and a variety
  * of utility methods to make developing easier
  */
 public interface ApiService {
+
+    /**
+     * This method returns a list of port numbers that the crawlers are looking for.
+     *
+     * @param apiKey account api key
+     * @return {@link Observable<List<Integer>>}
+     */
+    @GET("shodan/ports")
+    Observable<List<Integer>> ports(@Query(Constants.KEY) String apiKey);
 
     /**
      * This method lets you determine which filters are being used by the query string and what parameters

@@ -14,6 +14,8 @@ import retrofit2.http.Query;
 import retrofit2.mock.BehaviorDelegate;
 import rx.Observable;
 
+import java.util.List;
+
 /**
  *
  */
@@ -24,6 +26,11 @@ public class ApiRestMock implements ApiService {
 
     public ApiRestMock(BehaviorDelegate<ApiService> behaviorDelegate) {
         this.behaviorDelegate = behaviorDelegate;
+    }
+
+    @Override
+    public Observable<List<Integer>> ports(@Query("key") String apiKey) {
+        return null;
     }
 
     @Override

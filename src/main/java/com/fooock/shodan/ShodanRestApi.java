@@ -8,6 +8,8 @@ import com.fooock.shodan.model.user.Account;
 import com.fooock.shodan.model.user.ApiStatus;
 import rx.Observable;
 
+import java.util.List;
+
 /**
  * Main entry point to make queries to the Shodan rest API
  * <p>
@@ -27,6 +29,15 @@ public final class ShodanRestApi extends AbstractApi {
     public ShodanRestApi(String apiKey) {
         super(apiKey);
         this.apiService = serviceCreator.getRestService();
+    }
+
+    /**
+     * This method returns a list of port numbers that the crawlers are looking for.
+     *
+     * @return {@link Observable<List<Integer>>}
+     */
+    public Observable<List<Integer>> ports() {
+        return apiService.ports(apiKey);
     }
 
     /**
