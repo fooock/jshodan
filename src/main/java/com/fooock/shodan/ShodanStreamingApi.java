@@ -1,7 +1,10 @@
 package com.fooock.shodan;
 
+import com.fooock.shodan.model.banner.Banner;
 import com.fooock.shodan.model.banner.BannerReport;
 import rx.Observable;
+
+import java.util.List;
 
 /**
  * Main entry point to request Shodan streaming data.
@@ -21,6 +24,28 @@ public final class ShodanStreamingApi extends AbstractApi {
     public ShodanStreamingApi(String apiKey) {
         super(apiKey);
         this.streamingService = serviceCreator.getStreamingService();
+    }
+
+    /**
+     * Subscribe to banners discovered on all IP ranges described in the network alerts.
+     *
+     * @return {@link Observable<List<Banner>>}
+     */
+    public Observable<BannerReport> alert() {
+        return streamingService.alert(apiKey);
+    }
+
+    /**
+     * Subscribe to banners discovered on the IP range defined in a specific network alert.
+     *
+     * @param id The unique ID of the network alert; example "HKVGAIRWD79Z7W2T
+     * @return {@link Observable<List<Banner>>}
+     */
+    public Observable<BannerReport> alert(String id) {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("Id con't be null or empty");
+        }
+        return streamingService.alert(id, apiKey);
     }
 
     /**

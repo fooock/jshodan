@@ -15,6 +15,25 @@ import java.util.List;
 public interface StreamingService {
 
     /**
+     * Subscribe to banners discovered on all IP ranges described in the network alerts.
+     *
+     * @param apiKey account api key
+     * @return {@link Observable<List<Banner>>}
+     */
+    @GET("shodan/alert")
+    Observable<BannerReport> alert(@Query(Constants.KEY) String apiKey);
+
+    /**
+     * Subscribe to banners discovered on the IP range defined in a specific network alert.
+     *
+     * @param id     The unique ID of the network alert; example "HKVGAIRWD79Z7W2T"
+     * @param apiKey account api key
+     * @return {@link Observable<List<Banner>>}
+     */
+    @GET("shodan/alert/{id}")
+    Observable<BannerReport> alert(@Path(Constants.ID) String id, @Query(Constants.KEY) String apiKey);
+
+    /**
      * This stream provides ALL of the data that Shodan collects. Use this stream if you need access to everything
      * and/ or want to store your own Shodan database locally. If you only care about specific ports, please use
      * the Ports stream.
