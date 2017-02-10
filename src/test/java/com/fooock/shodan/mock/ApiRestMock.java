@@ -2,6 +2,8 @@ package com.fooock.shodan.mock;
 
 import com.fooock.shodan.ApiService;
 import com.fooock.shodan.ReadJson;
+import com.fooock.shodan.model.dns.DnsHostname;
+import com.fooock.shodan.model.dns.DnsIp;
 import com.fooock.shodan.model.host.Host;
 import com.fooock.shodan.model.query.QueryReport;
 import com.fooock.shodan.model.tag.TagReport;
@@ -26,6 +28,16 @@ public class ApiRestMock implements ApiService {
 
     public ApiRestMock(BehaviorDelegate<ApiService> behaviorDelegate) {
         this.behaviorDelegate = behaviorDelegate;
+    }
+
+    @Override
+    public Observable<List<DnsHostname>> reverseDns(@Query("key") String apiKey, @Query("ips") String ips) {
+        return null;
+    }
+
+    @Override
+    public Observable<List<DnsIp>> resolveDns(@Query("key") String apiKey, @Query("hostnames") String hostnames) {
+        return null;
     }
 
     @Override
