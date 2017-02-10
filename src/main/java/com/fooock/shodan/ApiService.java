@@ -139,7 +139,7 @@ public interface ApiService {
      * @return {@link Observable<Host>}
      */
     @GET("shodan/host/{ip}")
-    Observable<Host> host(@Path(Constants.IP) String ip, @Query(Constants.KEY) String apiKey);
+    Observable<Host> hostByIp(@Path(Constants.IP) String ip, @Query(Constants.KEY) String apiKey);
 
     /**
      * Returns all services that have been found on the given host IP with all historical data if the
@@ -151,9 +151,9 @@ public interface ApiService {
      * @return {@link Observable<Host>}
      */
     @GET("shodan/host/{ip}")
-    Observable<Host> host(@Path(Constants.IP) String ip,
-                          @Query(Constants.KEY) String apiKey,
-                          @Query(Constants.HISTORY) boolean history);
+    Observable<Host> hostByIp(@Path(Constants.IP) String ip,
+                              @Query(Constants.KEY) String apiKey,
+                              @Query(Constants.HISTORY) boolean history);
 
     /**
      * Returns all services that have been found on the given host IP. If the minify param is true this method
@@ -167,10 +167,10 @@ public interface ApiService {
      * @return {@link Observable<Host>}
      */
     @GET("shodan/host/{ip}")
-    Observable<Host> host(@Path(Constants.IP) String ip,
-                          @Query(Constants.KEY) String apiKey,
-                          @Query(Constants.HISTORY) boolean history,
-                          @Query(Constants.MINIFY) boolean minify);
+    Observable<Host> hostByIp(@Path(Constants.IP) String ip,
+                              @Query(Constants.KEY) String apiKey,
+                              @Query(Constants.HISTORY) boolean history,
+                              @Query(Constants.MINIFY) boolean minify);
 
     /**
      * Returns information about the Shodan account linked to the api key.

@@ -22,19 +22,19 @@ public class ShodanRestApiTest {
     @Test(expected = IllegalArgumentException.class)
     public void testHostFail() throws Exception {
         ShodanRestApi restApi = new ShodanRestApi("1234567890");
-        restApi.host(null);
+        restApi.hostByIp(null);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testHostWithHistoryFail() throws Exception {
         ShodanRestApi restApi = new ShodanRestApi("1234567890");
-        restApi.host(true, "");
+        restApi.hostByIp(true, "");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testHostWithMinifyFail() throws Exception {
         ShodanRestApi restApi = new ShodanRestApi("1234567890");
-        restApi.host(false, true, "");
+        restApi.hostByIp(false, true, "");
     }
 
     @Test(expected = IllegalArgumentException.class)

@@ -184,11 +184,11 @@ public final class ShodanRestApi extends AbstractApi {
      * @param ip Host IP address
      * @return
      */
-    public Observable<Host> host(String ip) {
+    public Observable<Host> hostByIp(String ip) {
         if (ip == null || ip.isEmpty()) {
             throw new IllegalArgumentException("Ip can't be null or empty");
         }
-        return apiService.host(ip, apiKey);
+        return apiService.hostByIp(ip, apiKey);
     }
 
     /**
@@ -199,11 +199,11 @@ public final class ShodanRestApi extends AbstractApi {
      * @param ip      Host IP address
      * @return
      */
-    public Observable<Host> host(boolean history, String ip) {
+    public Observable<Host> hostByIp(boolean history, String ip) {
         if (ip == null || ip.isEmpty()) {
             throw new IllegalArgumentException("Ip can't be null or empty");
         }
-        return apiService.host(ip, apiKey, history);
+        return apiService.hostByIp(ip, apiKey, history);
     }
 
     /**
@@ -216,11 +216,11 @@ public final class ShodanRestApi extends AbstractApi {
      * @param ip      Host IP address
      * @return
      */
-    public Observable<Host> host(boolean history, boolean minify, String ip) {
+    public Observable<Host> hostByIp(boolean history, boolean minify, String ip) {
         if (ip == null || ip.isEmpty()) {
             throw new IllegalArgumentException("Ip can't be null or empty");
         }
-        return apiService.host(ip, apiKey, history, minify);
+        return apiService.hostByIp(ip, apiKey, history, minify);
     }
 
     /**

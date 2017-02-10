@@ -100,7 +100,7 @@ public class ApiServiceTest {
     public void testSearchHostSuccess() throws Exception {
         TestSubscriber<Host> subscriber = new TestSubscriber<>();
 
-        apiRestMock.host("127.0.0.1", apiKey).subscribe(subscriber);
+        apiRestMock.hostByIp("127.0.0.1", apiKey).subscribe(subscriber);
 
         subscriber.assertCompleted();
         subscriber.assertNoErrors();
@@ -110,7 +110,7 @@ public class ApiServiceTest {
     public void testSearchHostMinifiedSuccess() throws Exception {
         TestSubscriber<Host> subscriber = new TestSubscriber<>();
 
-        apiRestMock.host("127.0.0.1", apiKey, false, true).subscribe(subscriber);
+        apiRestMock.hostByIp("127.0.0.1", apiKey, false, true).subscribe(subscriber);
 
         subscriber.assertCompleted();
         subscriber.assertNoErrors();

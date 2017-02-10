@@ -82,20 +82,20 @@ public class ApiRestMock implements ApiService {
     }
 
     @Override
-    public Observable<Host> host(@Path("ip") String ip, @Query("key") String apiKey) {
+    public Observable<Host> hostByIp(@Path("ip") String ip, @Query("key") String apiKey) {
         Host host = gson.fromJson(ReadJson.readFile("shodan_host.json"), Host.class);
-        return behaviorDelegate.returningResponse(host).host(ip, apiKey);
+        return behaviorDelegate.returningResponse(host).hostByIp(ip, apiKey);
     }
 
     @Override
-    public Observable<Host> host(@Path("ip") String ip, @Query("key") String apiKey, @Query("history") boolean history) {
+    public Observable<Host> hostByIp(@Path("ip") String ip, @Query("key") String apiKey, @Query("history") boolean history) {
         return null;
     }
 
     @Override
-    public Observable<Host> host(@Path("ip") String ip, @Query("key") String apiKey, @Query("history") boolean history, @Query("minify") boolean minify) {
+    public Observable<Host> hostByIp(@Path("ip") String ip, @Query("key") String apiKey, @Query("history") boolean history, @Query("minify") boolean minify) {
         Host host = gson.fromJson(ReadJson.readFile("shodan_host_minified.json"), Host.class);
-        return behaviorDelegate.returningResponse(host).host(ip, apiKey, history, minify);
+        return behaviorDelegate.returningResponse(host).hostByIp(ip, apiKey, history, minify);
     }
 
     @Override
