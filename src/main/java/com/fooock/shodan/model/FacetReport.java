@@ -10,7 +10,7 @@ public class FacetReport {
     private final int total;
     private final List<Facet> facets;
 
-    public FacetReport(int total, List<Facet> facets) {
+    FacetReport(int total, List<Facet> facets) {
         this.total = total;
         this.facets = facets;
     }

@@ -22,6 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Class to create the three different services that Shodan supports
@@ -33,7 +34,8 @@ class ServiceCreator {
     private static final String SHODAN_EXPLOIT_API_URL = "https://exploits.shodan.io/";
 
     private static class Loader {
-        private static final OkHttpClient.Builder CLIENT_BUILDER = new OkHttpClient.Builder();
+        private static final OkHttpClient.Builder CLIENT_BUILDER = new OkHttpClient.Builder()
+                .connectTimeout(30, TimeUnit.SECONDS);
 
         private Loader() {
             // empty
