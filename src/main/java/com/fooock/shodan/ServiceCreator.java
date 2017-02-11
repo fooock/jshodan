@@ -1,13 +1,13 @@
 package com.fooock.shodan;
 
-import com.fooock.shodan.model.FacetReport;
-import com.fooock.shodan.model.FacetReportDeserializer;
 import com.fooock.shodan.model.dns.DnsHostname;
 import com.fooock.shodan.model.dns.DnsHostnameDeserializer;
 import com.fooock.shodan.model.dns.DnsIp;
 import com.fooock.shodan.model.dns.DnsIpDeserializer;
 import com.fooock.shodan.model.exploit.Exploit;
 import com.fooock.shodan.model.exploit.ExploitDeserializer;
+import com.fooock.shodan.model.host.FacetReport;
+import com.fooock.shodan.model.host.FacetReportDeserializer;
 import com.fooock.shodan.model.protocol.Protocol;
 import com.fooock.shodan.model.protocol.ProtocolDeserializer;
 import com.fooock.shodan.model.user.HttpHeader;

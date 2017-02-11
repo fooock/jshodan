@@ -1,8 +1,8 @@
 package com.fooock.shodan;
 
-import com.fooock.shodan.model.FacetReport;
 import com.fooock.shodan.model.dns.DnsHostname;
 import com.fooock.shodan.model.dns.DnsIp;
+import com.fooock.shodan.model.host.FacetReport;
 import com.fooock.shodan.model.host.Host;
 import com.fooock.shodan.model.host.HostReport;
 import com.fooock.shodan.model.protocol.Protocol;

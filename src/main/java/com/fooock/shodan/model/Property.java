@@ -8,7 +8,7 @@ public class Property {
     private final int count;
     private final String value;
 
-    Property(int count, String value) {
+    public Property(int count, String value) {
         this.count = count;
         this.value = value;
     }

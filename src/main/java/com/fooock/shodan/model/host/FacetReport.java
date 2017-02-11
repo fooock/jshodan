@@ -1,4 +1,4 @@
-package com.fooock.shodan.model;
+package com.fooock.shodan.model.host;
 
 import java.util.List;
 

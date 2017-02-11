@@ -1,6 +1,5 @@
 package com.fooock.shodan.model.host;
 
-import com.fooock.shodan.model.FacetReport;
 import com.fooock.shodan.model.banner.Banner;
 import com.google.gson.annotations.SerializedName;
 

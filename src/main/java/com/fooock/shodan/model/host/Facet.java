@@ -1,4 +1,6 @@
-package com.fooock.shodan.model;
+package com.fooock.shodan.model.host;
+
+import com.fooock.shodan.model.Property;
 
 import java.util.List;
 
