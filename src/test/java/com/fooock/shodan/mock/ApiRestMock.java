@@ -11,6 +11,7 @@ import com.fooock.shodan.model.tag.TagReport;
 import com.fooock.shodan.model.token.TokenReport;
 import com.fooock.shodan.model.user.Account;
 import com.fooock.shodan.model.user.ApiStatus;
+import com.fooock.shodan.model.user.HttpHeader;
 import com.google.gson.Gson;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -131,6 +132,11 @@ public class ApiRestMock implements ApiService {
 
     @Override
     public Observable<String> ip(@Query("key") String apiKey) {
+        return null;
+    }
+
+    @Override
+    public Observable<HttpHeader> httpHeaders(@Query("key") String apiKey) {
         return null;
     }
 

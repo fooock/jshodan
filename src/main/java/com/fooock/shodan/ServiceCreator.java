@@ -8,6 +8,8 @@ import com.fooock.shodan.model.exploit.Exploit;
 import com.fooock.shodan.model.exploit.ExploitDeserializer;
 import com.fooock.shodan.model.protocol.Protocol;
 import com.fooock.shodan.model.protocol.ProtocolDeserializer;
+import com.fooock.shodan.model.user.HttpHeader;
+import com.fooock.shodan.model.user.HttpHeaderDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -84,11 +86,15 @@ class ServiceCreator {
         Type protocolType = new TypeToken<List<Protocol>>() {
         }.getType();
 
+        Type httpHeaderType = new TypeToken<HttpHeader>() {
+        }.getType();
+
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(exploitType, new ExploitDeserializer())
                 .registerTypeAdapter(dnsIpType, new DnsIpDeserializer())
                 .registerTypeAdapter(dnsHostnameType, new DnsHostnameDeserializer())
                 .registerTypeAdapter(protocolType, new ProtocolDeserializer())
+                .registerTypeAdapter(httpHeaderType, new HttpHeaderDeserializer())
                 .create();
 
         final Retrofit retrofit = new Retrofit.Builder()

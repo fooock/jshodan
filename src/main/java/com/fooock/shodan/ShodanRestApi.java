@@ -9,6 +9,7 @@ import com.fooock.shodan.model.tag.TagReport;
 import com.fooock.shodan.model.token.TokenReport;
 import com.fooock.shodan.model.user.Account;
 import com.fooock.shodan.model.user.ApiStatus;
+import com.fooock.shodan.model.user.HttpHeader;
 import rx.Observable;
 
 import java.util.List;
@@ -286,6 +287,15 @@ public final class ShodanRestApi extends AbstractApi {
      */
     public Observable<String> ip() {
         return apiService.ip(apiKey);
+    }
+
+    /**
+     * Shows the HTTP headers that your client sends when connecting to a webserver.
+     *
+     * @return {@link Observable<HttpHeader>}
+     */
+    public Observable<HttpHeader> httpHeaders() {
+        return apiService.httpHeaders(apiKey);
     }
 
     /**

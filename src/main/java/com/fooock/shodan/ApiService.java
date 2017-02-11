@@ -9,6 +9,7 @@ import com.fooock.shodan.model.tag.TagReport;
 import com.fooock.shodan.model.token.TokenReport;
 import com.fooock.shodan.model.user.Account;
 import com.fooock.shodan.model.user.ApiStatus;
+import com.fooock.shodan.model.user.HttpHeader;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -232,6 +233,15 @@ public interface ApiService {
      */
     @GET("tools/myip")
     Observable<String> ip(@Query(Constants.KEY) String apiKey);
+
+    /**
+     * Shows the HTTP headers that your client sends when connecting to a webserver.
+     *
+     * @param apiKey account api key
+     * @return {@link Observable<HttpHeader>}
+     */
+    @GET("tools/httpheaders")
+    Observable<HttpHeader> httpHeaders(@Query(Constants.KEY) String apiKey);
 
     /**
      * Calculates a honeypot probability score ranging from 0 (not a honeypot) to 1.0 (is a honeypot).
