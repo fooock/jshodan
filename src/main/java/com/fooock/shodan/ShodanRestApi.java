@@ -4,6 +4,7 @@ import com.fooock.shodan.model.FacetReport;
 import com.fooock.shodan.model.dns.DnsHostname;
 import com.fooock.shodan.model.dns.DnsIp;
 import com.fooock.shodan.model.host.Host;
+import com.fooock.shodan.model.host.HostReport;
 import com.fooock.shodan.model.protocol.Protocol;
 import com.fooock.shodan.model.query.QueryReport;
 import com.fooock.shodan.model.tag.TagReport;
@@ -293,6 +294,79 @@ public final class ShodanRestApi extends AbstractApi {
             throw new IllegalArgumentException("Query can't be null or empty");
         }
         return apiService.hostCount(apiKey, query, facets);
+    }
+
+    /**
+     * Search Shodan using the same query syntax as the website and use facets to get summary information for
+     * different properties. This method may use API query credits depending on usage. If any of the following
+     * criteria are met, your account will be deducated 1 query credit:
+     * <li>
+     * <ol>The search query contains a filter.</ol>
+     * <ol>Accessing results past the 1st page using the "page". For every 100 results past the 1st page
+     * 1 query credit is deducted.</ol>
+     * </li>
+     *
+     * @param query Shodan search query. The provided string is used to search the database of banners in Shodan,
+     *              with the additional option to provide filters inside the search query using a "filter:value" format.
+     * @return {@link Observable<HostReport>}
+     */
+    public Observable<HostReport> hostSearch(String query) {
+        if (query == null || query.isEmpty()) {
+            throw new IllegalArgumentException("Query can't be null or empty");
+        }
+        return apiService.hostSearch(apiKey, query);
+    }
+
+    /**
+     * Search Shodan using the same query syntax as the website and use facets to get summary information for
+     * different properties. This method may use API query credits depending on usage. If any of the following
+     * criteria are met, your account will be deducated 1 query credit:
+     * <li>
+     * <ol>The search query contains a filter.</ol>
+     * <ol>Accessing results past the 1st page using the "page". For every 100 results past the 1st page
+     * 1 query credit is deducted.</ol>
+     * </li>
+     *
+     * @param query  Shodan search query. The provided string is used to search the database of banners in Shodan,
+     *               with the additional option to provide filters inside the search query using a "filter:value" format.
+     * @param facets A comma-separated list of properties to get summary information on. Property names can also be
+     *               in the format of "property:count", where "count" is the number of facets that will be returned
+     *               for a property
+     * @return {@link Observable<HostReport>}
+     */
+    public Observable<HostReport> hostSearch(String query, String facets) {
+        if (query == null || query.isEmpty()) {
+            throw new IllegalArgumentException("Query can't be null or empty");
+        }
+        return apiService.hostSearch(apiKey, query, facets);
+    }
+
+    /**
+     * Search Shodan using the same query syntax as the website and use facets to get summary information for
+     * different properties. This method may use API query credits depending on usage. If any of the following
+     * criteria are met, your account will be deducated 1 query credit:
+     * <li>
+     * <ol>The search query contains a filter.</ol>
+     * <ol>Accessing results past the 1st page using the "page". For every 100 results past the 1st page
+     * 1 query credit is deducted.</ol>
+     * </li>
+     *
+     * @param page   The page number to page through results 100 at a time (default: 1)
+     * @param query  Shodan search query. The provided string is used to search the database of banners in Shodan,
+     *               with the additional option to provide filters inside the search query using a "filter:value" format.
+     * @param facets A comma-separated list of properties to get summary information on. Property names can also be
+     *               in the format of "property:count", where "count" is the number of facets that will be returned
+     *               for a property
+     * @return {@link Observable<HostReport>}
+     */
+    public Observable<HostReport> hostSearch(int page, String query, String facets) {
+        if (page < 0) {
+            throw new IllegalArgumentException("Page can't be < 0");
+        }
+        if (query == null || query.isEmpty()) {
+            throw new IllegalArgumentException("Query can't be null or empty");
+        }
+        return apiService.hostSearch(apiKey, query, facets, page);
     }
 
     /**

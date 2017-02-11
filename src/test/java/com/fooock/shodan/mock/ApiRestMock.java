@@ -6,6 +6,7 @@ import com.fooock.shodan.model.FacetReport;
 import com.fooock.shodan.model.dns.DnsHostname;
 import com.fooock.shodan.model.dns.DnsIp;
 import com.fooock.shodan.model.host.Host;
+import com.fooock.shodan.model.host.HostReport;
 import com.fooock.shodan.model.protocol.Protocol;
 import com.fooock.shodan.model.query.QueryReport;
 import com.fooock.shodan.model.tag.TagReport;
@@ -125,6 +126,21 @@ public class ApiRestMock implements ApiService {
 
     @Override
     public Observable<FacetReport> hostCount(@Query("key") String apiKey, @Query("query") String query, @Query("facets") String facets) {
+        return null;
+    }
+
+    @Override
+    public Observable<HostReport> hostSearch(@Query("key") String apiKey, @Query("query") String query) {
+        return null;
+    }
+
+    @Override
+    public Observable<HostReport> hostSearch(@Query("key") String apiKey, @Query("query") String query, @Query("facets") String facets) {
+        return null;
+    }
+
+    @Override
+    public Observable<HostReport> hostSearch(@Query("key") String apiKey, @Query("query") String query, @Query("facets") String facets, @Query("page") int page) {
         return null;
     }
 

@@ -7,8 +7,9 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Banner {
 
-    private int ip;
     private int port;
+
+    private long ip;
 
     private String asn;
     private String data;
@@ -51,7 +52,7 @@ public class Banner {
     /**
      * @return The IP address of the host as an integer.
      */
-    public int getIp() {
+    public long getIp() {
         return ip;
     }
 
