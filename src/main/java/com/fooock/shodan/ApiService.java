@@ -29,7 +29,7 @@ public interface ApiService {
      * This method returns an object containing all the protocols that can be used when launching an Internet scan.
      *
      * @param apiKey account api key
-     * @return {@link Observable<List<Protocol>>}
+     * @return {@link Observable&lt;List<Protocol>&gt;}
      */
     @GET("shodan/protocols")
     Observable<List<Protocol>> protocols(@Query(Constants.KEY) String apiKey);
@@ -39,7 +39,7 @@ public interface ApiService {
      *
      * @param apiKey account api key
      * @param ips    Comma-separated list of IP addresses; example "74.125.227.230,204.79.197.200"
-     * @return {@link Observable<List<DnsHostname>>}
+     * @return {@link Observable&lt;List<DnsHostname>&gt;}
      */
     @GET("dns/reverse")
     Observable<List<DnsHostname>> reverseDns(@Query(Constants.KEY) String apiKey,
@@ -50,7 +50,7 @@ public interface ApiService {
      *
      * @param apiKey    account api key
      * @param hostnames Comma-separated list of hostnames; example "google.com,bing.com"
-     * @return {@link Observable<List<DnsIp>>}
+     * @return {@link Observable&lt;List<DnsIp>&gt;}
      */
     @GET("dns/resolve")
     Observable<List<DnsIp>> resolveDns(@Query(Constants.KEY) String apiKey,
@@ -60,7 +60,7 @@ public interface ApiService {
      * This method returns a list of port numbers that the crawlers are looking for.
      *
      * @param apiKey account api key
-     * @return {@link Observable<List<Integer>>}
+     * @return {@link Observable&lt;List<Integer>&gt;}
      */
     @GET("shodan/ports")
     Observable<List<Integer>> ports(@Query(Constants.KEY) String apiKey);

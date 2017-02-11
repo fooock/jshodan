@@ -40,7 +40,7 @@ public final class ShodanRestApi extends AbstractApi {
     /**
      * This method returns an object containing all the protocols that can be used when launching an Internet scan.
      *
-     * @return {@link Observable<List<Protocol>>}
+     * @return {@link Observable&lt;List<Protocol>&gt;}
      */
     public Observable<List<Protocol>> protocols() {
         return apiService.protocols(apiKey);
@@ -50,7 +50,7 @@ public final class ShodanRestApi extends AbstractApi {
      * Look up the hostnames that have been defined for the given list of IP addresses.
      *
      * @param ips Comma-separated list of IP addresses; example "74.125.227.230,204.79.197.200"
-     * @return {@link Observable<List<DnsHostname>>}
+     * @return {@link Observable&lt;List<DnsHostname>&gt;}
      */
     public Observable<List<DnsHostname>> reverseDns(String ips) {
         if (ips == null || ips.isEmpty()) {
@@ -63,7 +63,7 @@ public final class ShodanRestApi extends AbstractApi {
      * Look up the IP address for the provided list of hostnames.
      *
      * @param hostnames Comma-separated list of hostnames; example "google.com,bing.com"
-     * @return {@link Observable<List<DnsIp>>}
+     * @return {@link Observable&lt;List<DnsIp>&gt;}
      */
     public Observable<List<DnsIp>> resolveDns(String hostnames) {
         if (hostnames == null || hostnames.isEmpty()) {
@@ -265,7 +265,7 @@ public final class ShodanRestApi extends AbstractApi {
     }
 
     /**
-     * This method behaves identical to "/shodan/host/search" with the only difference that this method does
+     * This method behaves identical to {@link #hostSearch(String)} with the only difference that this method does
      * not return any host results, it only returns the total number of results that matched the query and any
      * facet information that was requested. As a result this method does not consume query credits.
      *
@@ -281,7 +281,7 @@ public final class ShodanRestApi extends AbstractApi {
     }
 
     /**
-     * This method behaves identical to "/shodan/host/search" with the only difference that this method does
+     * This method behaves identical to {@link #hostSearch(String)} with the only difference that this method does
      * not return any host results, it only returns the total number of results that matched the query and any
      * facet information that was requested. As a result this method does not consume query credits.
      *
@@ -300,11 +300,11 @@ public final class ShodanRestApi extends AbstractApi {
      * Search Shodan using the same query syntax as the website and use facets to get summary information for
      * different properties. This method may use API query credits depending on usage. If any of the following
      * criteria are met, your account will be deducated 1 query credit:
-     * <li>
-     * <ol>The search query contains a filter.</ol>
-     * <ol>Accessing results past the 1st page using the "page". For every 100 results past the 1st page
-     * 1 query credit is deducted.</ol>
-     * </li>
+     * <ul>
+     * <li>The search query contains a filter.</li>
+     * <li>Accessing results past the 1st page using the "page". For every 100 results past the 1st page
+     * 1 query credit is deducted.</li>
+     * </ul>
      *
      * @param query Shodan search query. The provided string is used to search the database of banners in Shodan,
      *              with the additional option to provide filters inside the search query using a "filter:value" format.
@@ -321,11 +321,11 @@ public final class ShodanRestApi extends AbstractApi {
      * Search Shodan using the same query syntax as the website and use facets to get summary information for
      * different properties. This method may use API query credits depending on usage. If any of the following
      * criteria are met, your account will be deducated 1 query credit:
-     * <li>
-     * <ol>The search query contains a filter.</ol>
-     * <ol>Accessing results past the 1st page using the "page". For every 100 results past the 1st page
-     * 1 query credit is deducted.</ol>
-     * </li>
+     * <ul>
+     * <li>The search query contains a filter.</li>
+     * <li>Accessing results past the 1st page using the "page". For every 100 results past the 1st page
+     * 1 query credit is deducted.</li>
+     * </ul>
      *
      * @param query  Shodan search query. The provided string is used to search the database of banners in Shodan,
      *               with the additional option to provide filters inside the search query using a "filter:value" format.
@@ -345,11 +345,11 @@ public final class ShodanRestApi extends AbstractApi {
      * Search Shodan using the same query syntax as the website and use facets to get summary information for
      * different properties. This method may use API query credits depending on usage. If any of the following
      * criteria are met, your account will be deducated 1 query credit:
-     * <li>
-     * <ol>The search query contains a filter.</ol>
-     * <ol>Accessing results past the 1st page using the "page". For every 100 results past the 1st page
-     * 1 query credit is deducted.</ol>
-     * </li>
+     * <ul>
+     * <li>The search query contains a filter.</li>
+     * <li>Accessing results past the 1st page using the "page". For every 100 results past the 1st page
+     * 1 query credit is deducted.</li>
+     * </ul>
      *
      * @param page   The page number to page through results 100 at a time (default: 1)
      * @param query  Shodan search query. The provided string is used to search the database of banners in Shodan,
