@@ -5,6 +5,7 @@ import com.fooock.shodan.ReadJson;
 import com.fooock.shodan.model.dns.DnsHostname;
 import com.fooock.shodan.model.dns.DnsIp;
 import com.fooock.shodan.model.host.Host;
+import com.fooock.shodan.model.protocol.Protocol;
 import com.fooock.shodan.model.query.QueryReport;
 import com.fooock.shodan.model.tag.TagReport;
 import com.fooock.shodan.model.token.TokenReport;
@@ -28,6 +29,11 @@ public class ApiRestMock implements ApiService {
 
     public ApiRestMock(BehaviorDelegate<ApiService> behaviorDelegate) {
         this.behaviorDelegate = behaviorDelegate;
+    }
+
+    @Override
+    public Observable<List<Protocol>> protocols(@Query("key") String apiKey) {
+        return null;
     }
 
     @Override

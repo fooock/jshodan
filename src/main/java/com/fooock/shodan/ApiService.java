@@ -3,6 +3,7 @@ package com.fooock.shodan;
 import com.fooock.shodan.model.dns.DnsHostname;
 import com.fooock.shodan.model.dns.DnsIp;
 import com.fooock.shodan.model.host.Host;
+import com.fooock.shodan.model.protocol.Protocol;
 import com.fooock.shodan.model.query.QueryReport;
 import com.fooock.shodan.model.tag.TagReport;
 import com.fooock.shodan.model.token.TokenReport;
@@ -20,6 +21,15 @@ import java.util.List;
  * of utility methods to make developing easier
  */
 public interface ApiService {
+
+    /**
+     * This method returns an object containing all the protocols that can be used when launching an Internet scan.
+     *
+     * @param apiKey account api key
+     * @return {@link Observable<List<Protocol>>}
+     */
+    @GET("shodan/protocols")
+    Observable<List<Protocol>> protocols(@Query(Constants.KEY) String apiKey);
 
     /**
      * Look up the hostnames that have been defined for the given list of IP addresses.
