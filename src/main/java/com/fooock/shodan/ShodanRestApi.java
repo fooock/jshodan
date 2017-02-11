@@ -75,7 +75,7 @@ public final class ShodanRestApi extends AbstractApi {
     /**
      * This method returns a list of port numbers that the crawlers are looking for.
      *
-     * @return {@link Observable<List<Integer>>}
+     * @return {@link Observable&lt;List<Integer>&gt;}
      */
     public Observable<List<Integer>> ports() {
         return apiService.ports(apiKey);
