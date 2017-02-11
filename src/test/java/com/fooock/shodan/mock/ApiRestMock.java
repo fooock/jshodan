@@ -2,6 +2,7 @@ package com.fooock.shodan.mock;
 
 import com.fooock.shodan.ApiService;
 import com.fooock.shodan.ReadJson;
+import com.fooock.shodan.model.FacetReport;
 import com.fooock.shodan.model.dns.DnsHostname;
 import com.fooock.shodan.model.dns.DnsIp;
 import com.fooock.shodan.model.host.Host;
@@ -115,6 +116,16 @@ public class ApiRestMock implements ApiService {
     public Observable<Host> hostByIp(@Path("ip") String ip, @Query("key") String apiKey, @Query("history") boolean history, @Query("minify") boolean minify) {
         Host host = gson.fromJson(ReadJson.readFile("shodan_host_minified.json"), Host.class);
         return behaviorDelegate.returningResponse(host).hostByIp(ip, apiKey, history, minify);
+    }
+
+    @Override
+    public Observable<FacetReport> hostCount(@Query("key") String apiKey, @Query("query") String query) {
+        return null;
+    }
+
+    @Override
+    public Observable<FacetReport> hostCount(@Query("key") String apiKey, @Query("query") String query, @Query("facets") String facets) {
+        return null;
     }
 
     @Override

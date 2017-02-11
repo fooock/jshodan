@@ -1,5 +1,6 @@
 package com.fooock.shodan;
 
+import com.fooock.shodan.model.FacetReport;
 import com.fooock.shodan.model.dns.DnsHostname;
 import com.fooock.shodan.model.dns.DnsIp;
 import com.fooock.shodan.model.host.Host;
@@ -253,13 +254,45 @@ public final class ShodanRestApi extends AbstractApi {
      * @param history True if all historical banners should be returned (default false)
      * @param minify  True to only return the list of ports and the general host information, no banners (default false)
      * @param ip      Host IP address
-     * @return
+     * @return {@link Observable<Host>}
      */
     public Observable<Host> hostByIp(boolean history, boolean minify, String ip) {
         if (ip == null || ip.isEmpty()) {
             throw new IllegalArgumentException("Ip can't be null or empty");
         }
         return apiService.hostByIp(ip, apiKey, history, minify);
+    }
+
+    /**
+     * This method behaves identical to "/shodan/host/search" with the only difference that this method does
+     * not return any host results, it only returns the total number of results that matched the query and any
+     * facet information that was requested. As a result this method does not consume query credits.
+     *
+     * @param query Shodan search query. The provided string is used to search the database of banners in Shodan,
+     *              with the additional option to provide filters inside the search query using a "filter:value" format
+     * @return {@link Observable<FacetReport>}
+     */
+    public Observable<FacetReport> hostCount(String query) {
+        if (query == null || query.isEmpty()) {
+            throw new IllegalArgumentException("Query can't be null or empty");
+        }
+        return apiService.hostCount(apiKey, query);
+    }
+
+    /**
+     * This method behaves identical to "/shodan/host/search" with the only difference that this method does
+     * not return any host results, it only returns the total number of results that matched the query and any
+     * facet information that was requested. As a result this method does not consume query credits.
+     *
+     * @param query Shodan search query. The provided string is used to search the database of banners in Shodan,
+     *              with the additional option to provide filters inside the search query using a "filter:value" format
+     * @return {@link Observable<FacetReport>}
+     */
+    public Observable<FacetReport> hostCount(String query, String facets) {
+        if (query == null || query.isEmpty()) {
+            throw new IllegalArgumentException("Query can't be null or empty");
+        }
+        return apiService.hostCount(apiKey, query, facets);
     }
 
     /**

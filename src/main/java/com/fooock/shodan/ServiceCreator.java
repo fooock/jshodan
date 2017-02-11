@@ -1,5 +1,7 @@
 package com.fooock.shodan;
 
+import com.fooock.shodan.model.FacetReport;
+import com.fooock.shodan.model.FacetReportDeserializer;
 import com.fooock.shodan.model.dns.DnsHostname;
 import com.fooock.shodan.model.dns.DnsHostnameDeserializer;
 import com.fooock.shodan.model.dns.DnsIp;
@@ -89,12 +91,16 @@ class ServiceCreator {
         Type httpHeaderType = new TypeToken<HttpHeader>() {
         }.getType();
 
+        Type facetReportType = new TypeToken<FacetReport>() {
+        }.getType();
+
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(exploitType, new ExploitDeserializer())
                 .registerTypeAdapter(dnsIpType, new DnsIpDeserializer())
                 .registerTypeAdapter(dnsHostnameType, new DnsHostnameDeserializer())
                 .registerTypeAdapter(protocolType, new ProtocolDeserializer())
                 .registerTypeAdapter(httpHeaderType, new HttpHeaderDeserializer())
+                .registerTypeAdapter(facetReportType, new FacetReportDeserializer())
                 .create();
 
         final Retrofit retrofit = new Retrofit.Builder()

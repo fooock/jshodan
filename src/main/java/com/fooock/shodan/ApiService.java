@@ -1,5 +1,6 @@
 package com.fooock.shodan;
 
+import com.fooock.shodan.model.FacetReport;
 import com.fooock.shodan.model.dns.DnsHostname;
 import com.fooock.shodan.model.dns.DnsIp;
 import com.fooock.shodan.model.host.Host;
@@ -206,6 +207,37 @@ public interface ApiService {
                               @Query(Constants.KEY) String apiKey,
                               @Query(Constants.HISTORY) boolean history,
                               @Query(Constants.MINIFY) boolean minify);
+
+    /**
+     * This method behaves identical to "/shodan/host/search" with the only difference that this method does
+     * not return any host results, it only returns the total number of results that matched the query and any
+     * facet information that was requested. As a result this method does not consume query credits.
+     *
+     * @param apiKey account api key
+     * @param query  Shodan search query. The provided string is used to search the database of banners in Shodan,
+     *               with the additional option to provide filters inside the search query using a "filter:value" format
+     * @return {@link Observable<FacetReport>}
+     */
+    @GET("shodan/host/count")
+    Observable<FacetReport> hostCount(@Query(Constants.KEY) String apiKey, @Query(Constants.QUERY) String query);
+
+    /**
+     * This method behaves identical to "/shodan/host/search" with the only difference that this method does
+     * not return any host results, it only returns the total number of results that matched the query and any
+     * facet information that was requested. As a result this method does not consume query credits.
+     *
+     * @param apiKey account api key
+     * @param query  Shodan search query. The provided string is used to search the database of banners in Shodan,
+     *               with the additional option to provide filters inside the search query using a "filter:value" format
+     * @param facets A comma-separated list of properties to get summary information on. Property names can also be
+     *               in the format of "property:count", where "count" is the number of facets that will be returned
+     *               for a property
+     * @return {@link Observable<FacetReport>}
+     */
+    @GET("shodan/host/count")
+    Observable<FacetReport> hostCount(@Query(Constants.KEY) String apiKey,
+                                      @Query(Constants.QUERY) String query,
+                                      @Query(Constants.FACETS) String facets);
 
     /**
      * Returns information about the Shodan account linked to the api key.
