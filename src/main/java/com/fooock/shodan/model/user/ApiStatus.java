@@ -27,7 +27,7 @@ package com.fooock.shodan.model.user;
 import com.google.gson.annotations.SerializedName;
 
 /**
- *
+ * Information about the API plan
  */
 public class ApiStatus {
 

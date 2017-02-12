@@ -25,7 +25,7 @@
 package com.fooock.shodan.model.protocol;
 
 /**
- *
+ * Protocol that can be used to launch on-demand internet scans
  */
 public class Protocol {
 
@@ -37,10 +37,16 @@ public class Protocol {
         this.description = description;
     }
 
+    /**
+     * @return Name of the protocol
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * @return Basic description of the protocol
+     */
     public String getDescription() {
         return description;
     }

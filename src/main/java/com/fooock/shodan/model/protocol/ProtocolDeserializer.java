@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
+ * Custom json deserializer for the {@link Protocol} class
  */
 public class ProtocolDeserializer implements JsonDeserializer<List<Protocol>> {
 
