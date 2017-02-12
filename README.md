@@ -1,5 +1,6 @@
 # jShodan
 [ ![Download](https://api.bintray.com/packages/fooock/maven/jShodan/images/download.svg) ](https://bintray.com/fooock/maven/jShodan/_latestVersion)
+
 Powerfull Shodan client written using RxJava and Retrofit. You can integrate this client into existing apps or create new one. With this Shodan client you can:
 * Search Shodan
 * Exploit search
@@ -28,11 +29,11 @@ or if you are using maven add to you pom.xml
 ## Getting started
 You need an API key to use this client. You can do this in [Shodan.io](http://shodan.io) 
 * **Rest API**
-```
+```java
 ShodanRestApi api = new ShodanRestApi("your api key here");
 ```
 A simple example of query Shodan with facet info. Note that executing this query consumes 1 query credit
-```
+```java
 api.hostSearch("port:8333", "bitcoin.ip:10,city:10")
     .subscribe(new Subscriber<HostReport>() {
         @Override
@@ -52,7 +53,7 @@ api.hostSearch("port:8333", "bitcoin.ip:10,city:10")
 });
 ```
 The result of this, if success, is an object ```HostReport``` that contains all info.
-```
+```java
 int total = hostReport.getTotal();
 List<Banner> banners = hostReport.getBanners();
 FacetReport facet = hostReport.getFacet();
@@ -61,11 +62,11 @@ You can use other method calls from the rest API. See the [ApiService](https://g
 
 * **Exploit API**
 Use this API to search for exploits from multiple data sources like Exploit DB, Metasploit and CVE. The use of this API is very simply and similar to the previous
-```
+```java
 ShodanExploitApi api = new ShodanExploitApi("your api key here");
 ```
 A simple example
-```
+```java
 api.search("ssl", "type")
     .subscribe(new Subscriber<ExploitReport>() {
         @Override
@@ -88,11 +89,11 @@ The result of this call, if success, is ```ExploitReport``` class that contains 
 
 * **Streaming API**
 This API returns a real-time stream of data collected by Shodan. 
-```
+```java
 ShodanStreamingApi api = new ShodanStreamingApi("your api key here");
 ```
 Example to get all data that Shodan collects
-```
+```java
 api.banners()
     .subscribe(new Subscriber<BannerReport>() {
         @Override
