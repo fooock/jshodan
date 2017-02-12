@@ -15,7 +15,6 @@ public interface StreamingService {
      * Subscribe to banners discovered on all IP ranges described in the network alerts.
      *
      * @param apiKey account api key
-     * @return {@link Observable<BannerReport>}
      */
     @GET("shodan/alert")
     Observable<BannerReport> alert(@Query(Constants.KEY) String apiKey);
@@ -25,7 +24,6 @@ public interface StreamingService {
      *
      * @param id     The unique ID of the network alert; example "HKVGAIRWD79Z7W2T"
      * @param apiKey account api key
-     * @return {@link Observable<BannerReport>}
      */
     @GET("shodan/alert/{id}")
     Observable<BannerReport> alert(@Path(Constants.ID) String id, @Query(Constants.KEY) String apiKey);
@@ -36,7 +34,6 @@ public interface StreamingService {
      * the Ports stream.
      *
      * @param apiKey account api key
-     * @return {@link Observable<BannerReport>}
      */
     @GET("shodan/banners")
     Observable<BannerReport> banners(@Query(Constants.KEY) String apiKey);
@@ -47,7 +44,6 @@ public interface StreamingService {
      *
      * @param asn    Comma-separated list of ASNs; example "3303,32475"
      * @param apiKey account api key
-     * @return {@link Observable<BannerReport>}
      */
     @GET("shodan/asn/{asn}")
     Observable<BannerReport> bannersByAsn(@Path(Constants.ASN) String asn, @Query(Constants.KEY) String apiKey);
@@ -58,7 +54,6 @@ public interface StreamingService {
      *
      * @param countries Comma-separated list of countries indicated by their 2 letter code; example "DE,US"
      * @param apiKey    account api key
-     * @return {@link Observable<BannerReport>}
      */
     @GET("shodan/countries/{countries}")
     Observable<BannerReport> bannersByCountries(@Path(Constants.COUNTRIES) String countries,
@@ -70,7 +65,6 @@ public interface StreamingService {
      *
      * @param ports  Comma-separated list of ports; example "1434,27017,6379"
      * @param apiKey account api key
-     * @return {@link Observable<BannerReport>}
      */
     @GET("shodan/ports/{ports}")
     Observable<BannerReport> bannersByPorts(@Path(Constants.PORTS) String ports, @Query(Constants.KEY) String apiKey);

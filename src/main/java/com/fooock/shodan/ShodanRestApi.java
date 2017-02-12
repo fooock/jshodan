@@ -39,8 +39,6 @@ public final class ShodanRestApi extends AbstractApi {
 
     /**
      * This method returns an object containing all the protocols that can be used when launching an Internet scan.
-     *
-     * @return {@link Observable&lt;List<Protocol>&gt;}
      */
     public Observable<List<Protocol>> protocols() {
         return apiService.protocols(apiKey);
@@ -50,7 +48,6 @@ public final class ShodanRestApi extends AbstractApi {
      * Look up the hostnames that have been defined for the given list of IP addresses.
      *
      * @param ips Comma-separated list of IP addresses; example "74.125.227.230,204.79.197.200"
-     * @return {@link Observable&lt;List<DnsHostname>&gt;}
      */
     public Observable<List<DnsHostname>> reverseDns(String ips) {
         if (ips == null || ips.isEmpty()) {
@@ -63,7 +60,6 @@ public final class ShodanRestApi extends AbstractApi {
      * Look up the IP address for the provided list of hostnames.
      *
      * @param hostnames Comma-separated list of hostnames; example "google.com,bing.com"
-     * @return {@link Observable&lt;List<DnsIp>&gt;}
      */
     public Observable<List<DnsIp>> resolveDns(String hostnames) {
         if (hostnames == null || hostnames.isEmpty()) {
@@ -74,8 +70,6 @@ public final class ShodanRestApi extends AbstractApi {
 
     /**
      * This method returns a list of port numbers that the crawlers are looking for.
-     *
-     * @return {@link Observable&lt;List<Integer>&gt;}
      */
     public Observable<List<Integer>> ports() {
         return apiService.ports(apiKey);
@@ -87,7 +81,6 @@ public final class ShodanRestApi extends AbstractApi {
      *
      * @param query Shodan search query. The provided string is used to search the database of banners in Shodan,
      *              with the additional option to provide filters inside the search query using a "filter:value" format.
-     * @return {@link Observable<TokenReport>}
      */
     public Observable<TokenReport> tokens(String query) {
         if (query == null || query.isEmpty()) {
@@ -99,8 +92,6 @@ public final class ShodanRestApi extends AbstractApi {
     /**
      * Use this method to obtain a list of search queries that users have saved in Shodan. This method
      * return for default the first ten queries
-     *
-     * @return {@link Observable<QueryReport>}
      */
     public Observable<QueryReport> queries() {
         return apiService.queries(apiKey);
@@ -108,10 +99,9 @@ public final class ShodanRestApi extends AbstractApi {
 
     /**
      * Use this method to obtain a list of search queries that users have saved in Shodan. If the page
-     * param is < 0 then an {@link IllegalArgumentException} is thrown
+     * param is &lt; 0 then an {@link IllegalArgumentException} is thrown
      *
      * @param page Page number to iterate over results; each page contains 10 items
-     * @return {@link Observable<QueryReport>}
      */
     public Observable<QueryReport> queries(int page) {
         if (page < 0) {
@@ -122,12 +112,11 @@ public final class ShodanRestApi extends AbstractApi {
 
     /**
      * Use this method to obtain a list of search queries that users have saved in Shodan. If the page
-     * param is < 0 then an {@link IllegalArgumentException} is thrown. Also the possible values for the
+     * param is &lt; 0 then an {@link IllegalArgumentException} is thrown. Also the possible values for the
      * sort param are votes and timestamp
      *
      * @param page Page number to iterate over results; each page contains 10 items
      * @param sort Sort the list based on a property. Possible values are: votes, timestamp
-     * @return {@link Observable<QueryReport>}
      */
     public Observable<QueryReport> queries(int page, String sort) {
         if (page < 0) {
@@ -142,13 +131,12 @@ public final class ShodanRestApi extends AbstractApi {
 
     /**
      * Use this method to obtain a list of search queries that users have saved in Shodan. If the page
-     * param is < 0 then an {@link IllegalArgumentException} is thrown. Also the possible values for the
+     * param is &lt; 0 then an {@link IllegalArgumentException} is thrown. Also the possible values for the
      * sort param are votes and timestamp. The possible values for the order param are asc and desc
      *
      * @param page  Page number to iterate over results; each page contains 10 items
      * @param sort  Sort the list based on a property. Possible values are: votes, timestamp
      * @param order Whether to sort the list in ascending or descending order. Possible values are: asc, desc
-     * @return {@link Observable<QueryReport>}
      */
     public Observable<QueryReport> queries(int page, String sort, String order) {
         if (page < 0) {
@@ -170,7 +158,6 @@ public final class ShodanRestApi extends AbstractApi {
      * this method only return the first ten queries
      *
      * @param query What to queries for in the directory of saved queries queries.
-     * @return {@link Observable<QueryReport>}
      */
     public Observable<QueryReport> searches(String query) {
         if (query == null || query.isEmpty()) {
@@ -184,7 +171,6 @@ public final class ShodanRestApi extends AbstractApi {
      *
      * @param page  Page number to iterate over results; each page contains 10 items
      * @param query What to queries for in the directory of saved queries queries
-     * @return {@link Observable<QueryReport>}
      */
     public Observable<QueryReport> searches(int page, String query) {
         if (query == null || query.isEmpty()) {
@@ -199,8 +185,6 @@ public final class ShodanRestApi extends AbstractApi {
     /**
      * Use this method to obtain a list of popular tags for the saved queries in Shodan. This method only
      * return the first ten tags
-     *
-     * @return {@link Observable<TagReport>}
      */
     public Observable<TagReport> tags() {
         return apiService.tags(apiKey);
@@ -210,7 +194,6 @@ public final class ShodanRestApi extends AbstractApi {
      * Use this method to obtain a list of popular tags for the saved queries in Shodan.
      *
      * @param size The number of tags to return (default 10).
-     * @return {@link Observable<TagReport>}
      */
     public Observable<TagReport> tags(int size) {
         if (size < 0) {
@@ -223,7 +206,6 @@ public final class ShodanRestApi extends AbstractApi {
      * Returns all services that have been found on the given host IP.
      *
      * @param ip Host IP address
-     * @return
      */
     public Observable<Host> hostByIp(String ip) {
         if (ip == null || ip.isEmpty()) {
@@ -238,7 +220,6 @@ public final class ShodanRestApi extends AbstractApi {
      *
      * @param history True if all historical banners should be returned (default false)
      * @param ip      Host IP address
-     * @return
      */
     public Observable<Host> hostByIp(boolean history, String ip) {
         if (ip == null || ip.isEmpty()) {
@@ -255,7 +236,6 @@ public final class ShodanRestApi extends AbstractApi {
      * @param history True if all historical banners should be returned (default false)
      * @param minify  True to only return the list of ports and the general host information, no banners (default false)
      * @param ip      Host IP address
-     * @return {@link Observable<Host>}
      */
     public Observable<Host> hostByIp(boolean history, boolean minify, String ip) {
         if (ip == null || ip.isEmpty()) {
@@ -271,7 +251,6 @@ public final class ShodanRestApi extends AbstractApi {
      *
      * @param query Shodan search query. The provided string is used to search the database of banners in Shodan,
      *              with the additional option to provide filters inside the search query using a "filter:value" format
-     * @return {@link Observable<FacetReport>}
      */
     public Observable<FacetReport> hostCount(String query) {
         if (query == null || query.isEmpty()) {
@@ -287,7 +266,6 @@ public final class ShodanRestApi extends AbstractApi {
      *
      * @param query Shodan search query. The provided string is used to search the database of banners in Shodan,
      *              with the additional option to provide filters inside the search query using a "filter:value" format
-     * @return {@link Observable<FacetReport>}
      */
     public Observable<FacetReport> hostCount(String query, String facets) {
         if (query == null || query.isEmpty()) {
@@ -308,7 +286,6 @@ public final class ShodanRestApi extends AbstractApi {
      *
      * @param query Shodan search query. The provided string is used to search the database of banners in Shodan,
      *              with the additional option to provide filters inside the search query using a "filter:value" format.
-     * @return {@link Observable<HostReport>}
      */
     public Observable<HostReport> hostSearch(String query) {
         if (query == null || query.isEmpty()) {
@@ -332,7 +309,6 @@ public final class ShodanRestApi extends AbstractApi {
      * @param facets A comma-separated list of properties to get summary information on. Property names can also be
      *               in the format of "property:count", where "count" is the number of facets that will be returned
      *               for a property
-     * @return {@link Observable<HostReport>}
      */
     public Observable<HostReport> hostSearch(String query, String facets) {
         if (query == null || query.isEmpty()) {
@@ -357,7 +333,6 @@ public final class ShodanRestApi extends AbstractApi {
      * @param facets A comma-separated list of properties to get summary information on. Property names can also be
      *               in the format of "property:count", where "count" is the number of facets that will be returned
      *               for a property
-     * @return {@link Observable<HostReport>}
      */
     public Observable<HostReport> hostSearch(int page, String query, String facets) {
         if (page < 0) {
@@ -371,8 +346,6 @@ public final class ShodanRestApi extends AbstractApi {
 
     /**
      * Returns information about the Shodan account linked to the api key.
-     *
-     * @return {@link Observable<Account>}
      */
     public Observable<Account> account() {
         return apiService.account(apiKey);
@@ -380,8 +353,6 @@ public final class ShodanRestApi extends AbstractApi {
 
     /**
      * Returns information about the API plan belonging to the given API key.
-     *
-     * @return {@link Observable<ApiStatus>}
      */
     public Observable<ApiStatus> info() {
         return apiService.info(apiKey);
@@ -389,8 +360,6 @@ public final class ShodanRestApi extends AbstractApi {
 
     /**
      * Get your current IP address as seen from the Internet.
-     *
-     * @return {@link Observable<String>}
      */
     public Observable<String> ip() {
         return apiService.ip(apiKey);
@@ -398,8 +367,6 @@ public final class ShodanRestApi extends AbstractApi {
 
     /**
      * Shows the HTTP headers that your client sends when connecting to a webserver.
-     *
-     * @return {@link Observable<HttpHeader>}
      */
     public Observable<HttpHeader> httpHeaders() {
         return apiService.httpHeaders(apiKey);
@@ -409,7 +376,6 @@ public final class ShodanRestApi extends AbstractApi {
      * Calculates a honeypot probability score ranging from 0 (not a honeypot) to 1.0 (is a honeypot).
      *
      * @param ip Host IP address
-     * @return {@link Observable<Float>}
      */
     public Observable<Float> honeyScore(String ip) {
         if (ip == null || ip.isEmpty()) {

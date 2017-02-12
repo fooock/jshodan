@@ -26,7 +26,7 @@ public class HostReport {
         return banners;
     }
 
-    public FacetReport getFacets() {
+    public FacetReport getFacet() {
         return facets;
     }
 

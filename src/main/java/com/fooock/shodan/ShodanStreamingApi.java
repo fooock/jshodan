@@ -25,8 +25,6 @@ public final class ShodanStreamingApi extends AbstractApi {
 
     /**
      * Subscribe to banners discovered on all IP ranges described in the network alerts.
-     *
-     * @return {@link Observable<BannerReport>}
      */
     public Observable<BannerReport> alert() {
         return streamingService.alert(apiKey);
@@ -36,7 +34,6 @@ public final class ShodanStreamingApi extends AbstractApi {
      * Subscribe to banners discovered on the IP range defined in a specific network alert.
      *
      * @param id The unique ID of the network alert; example "HKVGAIRWD79Z7W2T
-     * @return {@link Observable<BannerReport>}
      */
     public Observable<BannerReport> alert(String id) {
         if (id == null || id.isEmpty()) {
@@ -49,8 +46,6 @@ public final class ShodanStreamingApi extends AbstractApi {
      * This stream provides ALL of the data that Shodan collects. Use this stream if you need access to everything
      * and/ or want to store your own Shodan database locally. If you only care about specific ports, please use
      * the Ports stream.
-     *
-     * @return {@link Observable<BannerReport>}
      */
     public Observable<BannerReport> banners() {
         return streamingService.banners(apiKey);
@@ -61,7 +56,6 @@ public final class ShodanStreamingApi extends AbstractApi {
      * interested in devices located in certain ASNs.
      *
      * @param asn Comma-separated list of ASNs; example "3303,32475"
-     * @return {@link Observable<BannerReport>}
      */
     public Observable<BannerReport> bannersByAsn(String asn) {
         if (asn == null || asn.isEmpty()) {
@@ -75,7 +69,6 @@ public final class ShodanStreamingApi extends AbstractApi {
      * interested in devices located in certain countries.
      *
      * @param countries Comma-separated list of countries indicated by their 2 letter code; example "DE,US"
-     * @return {@link Observable<BannerReport>}
      */
     public Observable<BannerReport> bannersByCountry(String countries) {
         if (countries == null || countries.isEmpty()) {
@@ -89,7 +82,6 @@ public final class ShodanStreamingApi extends AbstractApi {
      * view of the Banners stream in case you are only interested in a specific list of ports.
      *
      * @param ports Comma-separated list of ports; example "1434,27017,6379"
-     * @return {@link Observable<BannerReport>}
      */
     public Observable<BannerReport> bannersByPort(String ports) {
         if (ports == null || ports.isEmpty()) {

@@ -29,7 +29,6 @@ public interface ApiService {
      * This method returns an object containing all the protocols that can be used when launching an Internet scan.
      *
      * @param apiKey account api key
-     * @return {@link Observable&lt;List<Protocol>&gt;}
      */
     @GET("shodan/protocols")
     Observable<List<Protocol>> protocols(@Query(Constants.KEY) String apiKey);
@@ -39,7 +38,6 @@ public interface ApiService {
      *
      * @param apiKey account api key
      * @param ips    Comma-separated list of IP addresses; example "74.125.227.230,204.79.197.200"
-     * @return {@link Observable&lt;List<DnsHostname>&gt;}
      */
     @GET("dns/reverse")
     Observable<List<DnsHostname>> reverseDns(@Query(Constants.KEY) String apiKey,
@@ -50,7 +48,6 @@ public interface ApiService {
      *
      * @param apiKey    account api key
      * @param hostnames Comma-separated list of hostnames; example "google.com,bing.com"
-     * @return {@link Observable&lt;List<DnsIp>&gt;}
      */
     @GET("dns/resolve")
     Observable<List<DnsIp>> resolveDns(@Query(Constants.KEY) String apiKey,
@@ -60,7 +57,6 @@ public interface ApiService {
      * This method returns a list of port numbers that the crawlers are looking for.
      *
      * @param apiKey account api key
-     * @return {@link Observable&lt;List<Integer>&gt;}
      */
     @GET("shodan/ports")
     Observable<List<Integer>> ports(@Query(Constants.KEY) String apiKey);
@@ -72,7 +68,6 @@ public interface ApiService {
      * @param apiKey account api key
      * @param query  Shodan search query. The provided string is used to search the database of banners in Shodan,
      *               with the additional option to provide filters inside the search query using a "filter:value" format.
-     * @return {@link Observable<TokenReport>}
      */
     @GET("shodan/host/search/tokens")
     Observable<TokenReport> tokens(@Query(Constants.KEY) String apiKey, @Query(Constants.QUERY) String query);
@@ -81,7 +76,6 @@ public interface ApiService {
      * Use this method to obtain a list of search queries that users have saved in Shodan.
      *
      * @param apiKey account api key
-     * @return {@link Observable<QueryReport>}
      */
     @GET("shodan/query")
     Observable<QueryReport> queries(@Query(Constants.KEY) String apiKey);
@@ -91,7 +85,6 @@ public interface ApiService {
      *
      * @param apiKey account api key
      * @param page   Page number to iterate over results; each page contains 10 items
-     * @return {@link Observable<QueryReport>}
      */
     @GET("shodan/query")
     Observable<QueryReport> queries(@Query(Constants.KEY) String apiKey, @Query(Constants.PAGE) int page);
@@ -102,7 +95,6 @@ public interface ApiService {
      * @param apiKey account api key
      * @param page   Page number to iterate over results; each page contains 10 items
      * @param sort   Sort the list based on a property. Possible values are: votes, timestamp
-     * @return {@link Observable<QueryReport>}
      */
     @GET("shodan/query")
     Observable<QueryReport> queries(@Query(Constants.KEY) String apiKey,
@@ -116,7 +108,6 @@ public interface ApiService {
      * @param page   Page number to iterate over results; each page contains 10 items
      * @param sort   Sort the list based on a property. Possible values are: votes, timestamp
      * @param order  Whether to sort the list in ascending or descending order. Possible values are: asc, desc
-     * @return {@link Observable<QueryReport>}
      */
     @GET("shodan/query")
     Observable<QueryReport> queries(@Query(Constants.KEY) String apiKey,
@@ -130,7 +121,6 @@ public interface ApiService {
      *
      * @param apiKey account api key
      * @param query  What to queries for in the directory of saved queries queries.
-     * @return {@link Observable<QueryReport>}
      */
     @GET("shodan/query/search")
     Observable<QueryReport> searches(@Query(Constants.KEY) String apiKey, @Query(Constants.QUERY) String query);
@@ -141,7 +131,6 @@ public interface ApiService {
      * @param apiKey account api key
      * @param query  What to queries for in the directory of saved queries queries.
      * @param page   Page number to iterate over results; each page contains 10 items
-     * @return {@link Observable<QueryReport>}
      */
     @GET("shodan/query/search")
     Observable<QueryReport> searches(@Query(Constants.KEY) String apiKey,
@@ -153,7 +142,6 @@ public interface ApiService {
      * return the first ten tags
      *
      * @param apiKey account api key
-     * @return {@link Observable<TagReport>}
      */
     @GET("shodan/query/tags")
     Observable<TagReport> tags(@Query(Constants.KEY) String apiKey);
@@ -163,7 +151,6 @@ public interface ApiService {
      *
      * @param apiKey    account api key
      * @param tagNumber The number of tags to return (default 10).
-     * @return {@link Observable<TagReport>}
      */
     @GET("shodan/query/tags")
     Observable<TagReport> tags(@Query(Constants.KEY) String apiKey, @Query(Constants.SIZE) int tagNumber);
@@ -173,7 +160,6 @@ public interface ApiService {
      *
      * @param ip     Host IP address
      * @param apiKey account api key
-     * @return {@link Observable<Host>}
      */
     @GET("shodan/host/{ip}")
     Observable<Host> hostByIp(@Path(Constants.IP) String ip, @Query(Constants.KEY) String apiKey);
@@ -185,7 +171,6 @@ public interface ApiService {
      * @param ip      Host IP address
      * @param apiKey  account api key
      * @param history True if all historical banners should be returned (default false)
-     * @return {@link Observable<Host>}
      */
     @GET("shodan/host/{ip}")
     Observable<Host> hostByIp(@Path(Constants.IP) String ip,
@@ -201,7 +186,6 @@ public interface ApiService {
      * @param apiKey  account api key
      * @param history True if all historical banners should be returned (default false)
      * @param minify  True to only return the list of ports and the general host information, no banners (default false)
-     * @return {@link Observable<Host>}
      */
     @GET("shodan/host/{ip}")
     Observable<Host> hostByIp(@Path(Constants.IP) String ip,
@@ -217,7 +201,6 @@ public interface ApiService {
      * @param apiKey account api key
      * @param query  Shodan search query. The provided string is used to search the database of banners in Shodan,
      *               with the additional option to provide filters inside the search query using a "filter:value" format
-     * @return {@link Observable<FacetReport>}
      */
     @GET("shodan/host/count")
     Observable<FacetReport> hostCount(@Query(Constants.KEY) String apiKey, @Query(Constants.QUERY) String query);
@@ -233,7 +216,6 @@ public interface ApiService {
      * @param facets A comma-separated list of properties to get summary information on. Property names can also be
      *               in the format of "property:count", where "count" is the number of facets that will be returned
      *               for a property
-     * @return {@link Observable<FacetReport>}
      */
     @GET("shodan/host/count")
     Observable<FacetReport> hostCount(@Query(Constants.KEY) String apiKey,
@@ -244,16 +226,15 @@ public interface ApiService {
      * Search Shodan using the same query syntax as the website and use facets to get summary information for
      * different properties. This method may use API query credits depending on usage. If any of the following
      * criteria are met, your account will be deducated 1 query credit:
-     * <li>
-     * <ol>The search query contains a filter.</ol>
-     * <ol>Accessing results past the 1st page using the "page". For every 100 results past the 1st page
-     * 1 query credit is deducted.</ol>
-     * </li>
+     * <ul>
+     * <li>The search query contains a filter.</li>
+     * <li>Accessing results past the 1st page using the "page". For every 100 results past the 1st page
+     * 1 query credit is deducted.</li>
+     * </ul>
      *
      * @param apiKey account api key
      * @param query  Shodan search query. The provided string is used to search the database of banners in Shodan,
      *               with the additional option to provide filters inside the search query using a "filter:value" format.
-     * @return {@link Observable<HostReport>}
      */
     @GET("shodan/host/search")
     Observable<HostReport> hostSearch(@Query(Constants.KEY) String apiKey,
@@ -263,11 +244,11 @@ public interface ApiService {
      * Search Shodan using the same query syntax as the website and use facets to get summary information for
      * different properties. This method may use API query credits depending on usage. If any of the following
      * criteria are met, your account will be deducated 1 query credit:
-     * <li>
-     * <ol>The search query contains a filter.</ol>
-     * <ol>Accessing results past the 1st page using the "page". For every 100 results past the 1st page
-     * 1 query credit is deducted.</ol>
-     * </li>
+     * <ul>
+     * <li>The search query contains a filter.</li>
+     * <li>Accessing results past the 1st page using the "page". For every 100 results past the 1st page
+     * 1 query credit is deducted.</li>
+     * </ul>
      *
      * @param apiKey account api key
      * @param query  Shodan search query. The provided string is used to search the database of banners in Shodan,
@@ -275,7 +256,6 @@ public interface ApiService {
      * @param facets A comma-separated list of properties to get summary information on. Property names can also be
      *               in the format of "property:count", where "count" is the number of facets that will be returned
      *               for a property
-     * @return {@link Observable<HostReport>}
      */
     @GET("shodan/host/search")
     Observable<HostReport> hostSearch(@Query(Constants.KEY) String apiKey,
@@ -286,11 +266,11 @@ public interface ApiService {
      * Search Shodan using the same query syntax as the website and use facets to get summary information for
      * different properties. This method may use API query credits depending on usage. If any of the following
      * criteria are met, your account will be deducated 1 query credit:
-     * <li>
-     * <ol>The search query contains a filter.</ol>
-     * <ol>Accessing results past the 1st page using the "page". For every 100 results past the 1st page
-     * 1 query credit is deducted.</ol>
-     * </li>
+     * <ul>
+     * <li>The search query contains a filter.</li>
+     * <li>Accessing results past the 1st page using the "page". For every 100 results past the 1st page
+     * 1 query credit is deducted.</li>
+     * </ul>
      *
      * @param apiKey account api key
      * @param query  Shodan search query. The provided string is used to search the database of banners in Shodan,
@@ -299,7 +279,6 @@ public interface ApiService {
      *               in the format of "property:count", where "count" is the number of facets that will be returned
      *               for a property
      * @param page   The page number to page through results 100 at a time (default: 1)
-     * @return {@link Observable<HostReport>}
      */
     @GET("shodan/host/search")
     Observable<HostReport> hostSearch(@Query(Constants.KEY) String apiKey,
@@ -311,7 +290,6 @@ public interface ApiService {
      * Returns information about the Shodan account linked to the api key.
      *
      * @param apiKey account api key
-     * @return {@link Observable<Account>}
      */
     @GET("account/profile")
     Observable<Account> account(@Query(Constants.KEY) String apiKey);
@@ -320,7 +298,6 @@ public interface ApiService {
      * Returns information about the API plan belonging to the given API key.
      *
      * @param apiKey account api key
-     * @return {@link Observable<ApiStatus>}
      */
     @GET("api-info")
     Observable<ApiStatus> info(@Query(Constants.KEY) String apiKey);
@@ -329,7 +306,6 @@ public interface ApiService {
      * Get your current IP address as seen from the Internet.
      *
      * @param apiKey account api key
-     * @return {@link Observable<String>}
      */
     @GET("tools/myip")
     Observable<String> ip(@Query(Constants.KEY) String apiKey);
@@ -338,7 +314,6 @@ public interface ApiService {
      * Shows the HTTP headers that your client sends when connecting to a webserver.
      *
      * @param apiKey account api key
-     * @return {@link Observable<HttpHeader>}
      */
     @GET("tools/httpheaders")
     Observable<HttpHeader> httpHeaders(@Query(Constants.KEY) String apiKey);
@@ -348,7 +323,6 @@ public interface ApiService {
      *
      * @param ip     Host IP address
      * @param apiKey account api key
-     * @return {@link Observable<Float>}
      */
     @GET("labs/honeyscore/{ip}")
     Observable<Float> honeyScore(@Path(Constants.IP) String ip, @Query(Constants.KEY) String apiKey);

@@ -1,12 +1,96 @@
-group 'com.fooock'
-version '0.4.1-SNAPSHOT'
+buildscript {
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+    }
+}
 
+plugins {
+    id "com.jfrog.bintray" version "1.7.3"
+}
 apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+group 'com.fooock'
+version '0.4.3'
 
 sourceCompatibility = 1.7
 
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
 repositories {
     mavenCentral()
+    jcenter()
+}
+
+bintray {
+    user = project.hasProperty('username') ? project.property('username') : System.getenv('BINTRAY_USER')
+    key = project.hasProperty('password') ? project.property('password') : System.getenv('BINTRAY_API_KEY')
+    publications = ['mavenJava']
+    pkg {
+        repo = 'maven'
+        name = 'jShodan'
+        userOrg = 'fooock'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/fooock/jshodan.git'
+        issueTrackerUrl = 'https://github.com/fooock/jshodan/issues'
+
+        version {
+            name = '0.4.3'
+            gpg {
+                sign = true
+                passphrase = project.hasProperty('gpgpassword') ? project.property('gpgpassword') : System.getenv('BINTRAY_GPG')
+            }
+        }
+    }
+}
+
+def pomConfig = {
+    scm {
+        connection 'scm:git:https://github.com/fooock/jshodan.git'
+        url 'https://github.com/fooock/jshodan.git'
+    }
+    licenses {
+        license {
+            name "MIT"
+            url "https://github.com/fooock/jshodan/blob/master/LICENSE"
+            distribution "repo"
+        }
+    }
+    developers {
+        developer {
+            id "fooock"
+            name "newhouse"
+            email "nhitbh@gmail.com"
+        }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            groupId groupId
+            artifactId 'jshodan'
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('description', 'jShodan is a powerfull Shodan client writen in Java')
+                root.appendNode('name', 'jShodan')
+                root.appendNode('url', 'https://github.com/fooock/jshodan')
+                root.appendNode('packaging', 'jar')
+                root.children().last() + pomConfig
+            }
+        }
+    }
 }
 
 dependencies {
