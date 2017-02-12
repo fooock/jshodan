@@ -15,14 +15,14 @@ repositories {
 ```
 And in your dependencies block add this line
 ```
-compile 'com.fooock:jshodan:0.4.3'
+compile 'com.fooock:jshodan:0.4.4'
 ```
 or if you are using maven add to you pom.xml
 ```
 <dependency>
   <groupId>com.fooock</groupId>
   <artifactId>jshodan</artifactId>
-  <version>0.4.3</version>
+  <version>0.4.4</version>
   <type>pom</type>
 </dependency>
 ```
@@ -32,7 +32,7 @@ You need an API key to use this client. You can do this in [Shodan.io](http://sh
 ```java
 ShodanRestApi api = new ShodanRestApi("your api key here");
 ```
-A simple example of query Shodan with facet info. Note that executing this query consumes 1 query credit
+A simple example of query Shodan with facet info. Note that executing this query **consumes 1 query credit**
 ```java
 api.hostSearch("port:8333", "bitcoin.ip:10,city:10")
     .subscribe(new Subscriber<HostReport>() {
@@ -112,6 +112,7 @@ api.banners()
         }
 });
 ```
+**Note:** To use the streaming API you need a Shodan subscription-based API plan. You can obtain it in [Shodan pricing](https://developer.shodan.io/billing/signup)
 
 ## Android support
 If your plan is to create a new Android app using this, you need to add this dependency
