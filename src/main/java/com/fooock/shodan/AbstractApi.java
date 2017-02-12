@@ -18,6 +18,6 @@ abstract class AbstractApi {
         if (apiKey == null || apiKey.isEmpty()) {
             throw new IllegalArgumentException("Need to specify a valid api key!");
         }
-        this.apiKey = apiKey;
+        this.apiKey = apiKey.trim();
     }
 }
