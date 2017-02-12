@@ -120,6 +120,12 @@ If your plan is to create a new Android app using this, you need to add this dep
 compile 'io.reactivex.rxjava2:rxandroid:x.y.z'
 ```
 
+## Dependencies
+* [RxJava2](https://github.com/ReactiveX/RxJava) for its reactive-functional API
+* [Retrofit](https://github.com/square/retrofit) HTTP client for Android and Java
+* [Gson Retrofit converter](https://github.com/square/retrofit/tree/master/retrofit-converters/gson) A converter wich uses Gson for serialization to and from JSON
+* [RxJava2 adapter for Retrofit](https://github.com/square/retrofit/tree/master/retrofit-adapters/rxjava2) An adapter for rxJava2 types
+
 Enjoy it!
 ### Roadmap
 1. Testing
