@@ -7,10 +7,16 @@ Powerfull Shodan client written using RxJava and Retrofit. You can integrate thi
 * Streaming API to consume Shodan data in real time (in development)
 
 ## Installation
-If you use gradle sdd to your build.gradle
+If you use gradle add to your build.gradle
 ```
 repositories {
     jcenter()
+}
+```
+Also you can use maven central
+```
+repositories {
+    mavenCentral()
 }
 ```
 And in your dependencies block add this line
