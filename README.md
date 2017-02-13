@@ -1,7 +1,7 @@
 # jShodan
 [ ![Download](https://api.bintray.com/packages/fooock/maven/jShodan/images/download.svg) ](https://bintray.com/fooock/maven/jShodan/_latestVersion)
 
-Powerfull Shodan client written using RxJava and Retrofit. You can integrate this client into existing apps or create new one. With this Shodan client you can:
+Powerful Shodan client written using RxJava and Retrofit. You can integrate this client into existing apps or create new one. With this Shodan client you can:
 * Search Shodan
 * Exploit search
 * Streaming API to consume Shodan data in real time (in development)
