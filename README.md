@@ -21,14 +21,14 @@ repositories {
 ```
 And in your dependencies block add this line
 ```
-compile 'com.fooock:jshodan:0.4.4'
+compile 'com.fooock:jshodan:0.4.5'
 ```
 or if you are using maven add to you pom.xml
 ```
 <dependency>
   <groupId>com.fooock</groupId>
   <artifactId>jshodan</artifactId>
-  <version>0.4.4</version>
+  <version>0.4.5</version>
   <type>pom</type>
 </dependency>
 ```
@@ -41,7 +41,7 @@ ShodanRestApi api = new ShodanRestApi("your api key here");
 A simple example of query Shodan with facet info. Note that executing this query **consumes 1 query credit**
 ```java
 api.hostSearch("port:8333", "bitcoin.ip:10,city:10")
-    .subscribe(new Subscriber<HostReport>() {
+    .subscribe(new DisposableObserver<HostReport>() {
         @Override
         public void onCompleted() {
             // called when the request is completed
@@ -74,7 +74,7 @@ ShodanExploitApi api = new ShodanExploitApi("your api key here");
 A simple example
 ```java
 api.search("ssl", "type")
-    .subscribe(new Subscriber<ExploitReport>() {
+    .subscribe(new DisposableObserver<ExploitReport>() {
         @Override
         public void onCompleted() {
             // called when the request is completed
@@ -101,7 +101,7 @@ ShodanStreamingApi api = new ShodanStreamingApi("your api key here");
 Example to get all data that Shodan collects
 ```java
 api.banners()
-    .subscribe(new Subscriber<BannerReport>() {
+    .subscribe(new DisposableObserver<BannerReport>() {
         @Override
         public void onCompleted() {
             // called when the request is completed
