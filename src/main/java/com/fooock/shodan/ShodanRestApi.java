@@ -36,7 +36,7 @@ import com.fooock.shodan.model.token.TokenReport;
 import com.fooock.shodan.model.user.Account;
 import com.fooock.shodan.model.user.ApiStatus;
 import com.fooock.shodan.model.user.HttpHeader;
-import rx.Observable;
+import io.reactivex.Observable;
 
 import java.util.List;
 

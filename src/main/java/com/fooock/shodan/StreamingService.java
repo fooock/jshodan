@@ -25,10 +25,10 @@
 package com.fooock.shodan;
 
 import com.fooock.shodan.model.banner.BannerReport;
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
-import rx.Observable;
 
 /**
  * The Streaming API is an HTTP-based service that returns a real-time stream of data collected by

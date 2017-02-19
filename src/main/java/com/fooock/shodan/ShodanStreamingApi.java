@@ -25,7 +25,7 @@
 package com.fooock.shodan;
 
 import com.fooock.shodan.model.banner.BannerReport;
-import rx.Observable;
+import io.reactivex.Observable;
 
 /**
  * Main entry point to request Shodan streaming data. <p> The Streaming API is an HTTP-based service

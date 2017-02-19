@@ -15,10 +15,10 @@ import com.fooock.shodan.model.user.Account;
 import com.fooock.shodan.model.user.ApiStatus;
 import com.fooock.shodan.model.user.HttpHeader;
 import com.google.gson.Gson;
+import io.reactivex.Observable;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.mock.BehaviorDelegate;
-import rx.Observable;
 
 import java.util.List;
 
