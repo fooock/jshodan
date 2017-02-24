@@ -1,5 +1,5 @@
 # jShodan
-[ ![Download](https://api.bintray.com/packages/fooock/maven/jShodan/images/download.svg) ](https://bintray.com/fooock/maven/jShodan/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/fooock/maven/jShodan/images/download.svg) ](https://bintray.com/fooock/maven/jShodan/_latestVersion) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-jShodan-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/5312)
 
 Powerful Shodan client written using RxJava and Retrofit. You can integrate this client into existing apps or create new one. With this Shodan client you can:
 * Search Shodan
