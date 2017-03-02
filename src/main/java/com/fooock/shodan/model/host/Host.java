@@ -34,7 +34,7 @@ import java.util.List;
  */
 public class Host {
 
-    private int ip;
+    private long ip;
 
     private double latitude;
     private double longitude;
@@ -88,7 +88,7 @@ public class Host {
 
     }
 
-    public int getIp() {
+    public long getIp() {
         return ip;
     }
 
