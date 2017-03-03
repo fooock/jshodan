@@ -21,14 +21,14 @@ repositories {
 ```
 And in your dependencies block add this line
 ```
-compile 'com.fooock:jshodan:0.4.5'
+compile 'com.fooock:jshodan:0.4.6'
 ```
 or if you are using maven add to you pom.xml
 ```
 <dependency>
   <groupId>com.fooock</groupId>
   <artifactId>jshodan</artifactId>
-  <version>0.4.5</version>
+  <version>0.4.6</version>
   <type>pom</type>
 </dependency>
 ```
