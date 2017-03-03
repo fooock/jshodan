@@ -26,6 +26,8 @@ package com.fooock.shodan.model.banner;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Arrays;
+
 /**
  * The banner is the main type of information that Shodan provides through the REST and Streaming
  * API.
@@ -68,7 +70,8 @@ public class Banner {
     @SerializedName("devicetype")
     private String deviceType;
     private String info;
-    private String cpe;
+
+    private String[] cpe;
 
     Banner() {
 
@@ -226,7 +229,7 @@ public class Banner {
      * @return The relevant Common Platform Enumeration for the product or known vulnerabilities if
      * available.
      */
-    public String getCpe() {
+    public String[] getCpe() {
         return cpe;
     }
 
@@ -251,5 +254,131 @@ public class Banner {
      */
     public String getTransport() {
         return transport;
+    }
+
+    void setPort(int port) {
+        this.port = port;
+    }
+
+    void setIp(long ip) {
+        this.ip = ip;
+    }
+
+    void setAsn(String asn) {
+        this.asn = asn;
+    }
+
+    void setData(String data) {
+        this.data = data;
+    }
+
+    void setIpStr(String ipStr) {
+        this.ipStr = ipStr;
+    }
+
+    void setIpv6(String ipv6) {
+        this.ipv6 = ipv6;
+    }
+
+    void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    void setHostnames(String[] hostnames) {
+        this.hostnames = hostnames;
+    }
+
+    void setDomains(String[] domains) {
+        this.domains = domains;
+    }
+
+    void setLocation(Location location) {
+        this.location = location;
+    }
+
+    void setOptions(Options options) {
+        this.options = options;
+    }
+
+    void setMetadata(Metadata metadata) {
+        this.metadata = metadata;
+    }
+
+    void setUptime(int uptime) {
+        this.uptime = uptime;
+    }
+
+    void setLink(String link) {
+        this.link = link;
+    }
+
+    void setTitle(String title) {
+        this.title = title;
+    }
+
+    void setHtml(String html) {
+        this.html = html;
+    }
+
+    void setProduct(String product) {
+        this.product = product;
+    }
+
+    void setVersion(String version) {
+        this.version = version;
+    }
+
+    void setIsp(String isp) {
+        this.isp = isp;
+    }
+
+    void setOs(String os) {
+        this.os = os;
+    }
+
+    void setTransport(String transport) {
+        this.transport = transport;
+    }
+
+    void setDeviceType(String deviceType) {
+        this.deviceType = deviceType;
+    }
+
+    void setInfo(String info) {
+        this.info = info;
+    }
+
+    void setCpe(String[] cpe) {
+        this.cpe = cpe;
+    }
+
+    @Override
+    public String toString() {
+        return "Banner{" +
+                "port=" + port +
+                ", ip=" + ip +
+                ", asn='" + asn + '\'' +
+                ", data='" + data + '\'' +
+                ", ipStr='" + ipStr + '\'' +
+                ", ipv6='" + ipv6 + '\'' +
+                ", timestamp='" + timestamp + '\'' +
+                ", hostnames=" + Arrays.toString(hostnames) +
+                ", domains=" + Arrays.toString(domains) +
+                ", location=" + location +
+                ", options=" + options +
+                ", metadata=" + metadata +
+                ", uptime=" + uptime +
+                ", link='" + link + '\'' +
+                ", title='" + title + '\'' +
+                ", html='" + html + '\'' +
+                ", product='" + product + '\'' +
+                ", version='" + version + '\'' +
+                ", isp='" + isp + '\'' +
+                ", os='" + os + '\'' +
+                ", transport='" + transport + '\'' +
+                ", deviceType='" + deviceType + '\'' +
+                ", info='" + info + '\'' +
+                ", cpe='" + Arrays.toString(cpe) + '\'' +
+                '}';
     }
 }

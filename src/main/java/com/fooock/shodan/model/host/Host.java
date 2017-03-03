@@ -27,6 +27,7 @@ package com.fooock.shodan.model.host;
 import com.fooock.shodan.model.banner.Banner;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -174,5 +175,33 @@ public class Host {
 
     public List<Banner> getBanners() {
         return banners;
+    }
+
+    @Override
+    public String toString() {
+        return "Host{" +
+                "ip=" + ip +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", ports=" + Arrays.toString(ports) +
+                ", hostnames=" + Arrays.toString(hostnames) +
+                ", tags=" + Arrays.toString(tags) +
+                ", vulnerabilities=" + Arrays.toString(vulnerabilities) +
+                ", regionCode='" + regionCode + '\'' +
+                ", areaCode='" + areaCode + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", dmaCode='" + dmaCode + '\'' +
+                ", countryCode='" + countryCode + '\'' +
+                ", organization='" + organization + '\'' +
+                ", asn='" + asn + '\'' +
+                ", city='" + city + '\'' +
+                ", isp='" + isp + '\'' +
+                ", lastUpdate='" + lastUpdate + '\'' +
+                ", countryCode3='" + countryCode3 + '\'' +
+                ", countryName='" + countryName + '\'' +
+                ", ipStr='" + ipStr + '\'' +
+                ", os='" + os + '\'' +
+                ", banners=" + banners +
+                '}';
     }
 }

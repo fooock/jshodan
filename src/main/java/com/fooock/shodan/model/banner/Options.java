@@ -41,6 +41,10 @@ public class Options {
         return raw;
     }
 
+    void setRaw(String raw) {
+        this.raw = raw;
+    }
+
     @Override
     public String toString() {
         return "Options{" +

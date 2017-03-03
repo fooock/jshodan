@@ -48,4 +48,25 @@ public class Metadata {
     public String getModule() {
         return module;
     }
+
+    void setCrawler(String crawler) {
+        this.crawler = crawler;
+    }
+
+    void setId(String id) {
+        this.id = id;
+    }
+
+    void setModule(String module) {
+        this.module = module;
+    }
+
+    @Override
+    public String toString() {
+        return "Metadata{" +
+                "crawler='" + crawler + '\'' +
+                ", id='" + id + '\'' +
+                ", module='" + module + '\'' +
+                '}';
+    }
 }

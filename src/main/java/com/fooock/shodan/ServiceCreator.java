@@ -24,6 +24,8 @@
 
 package com.fooock.shodan;
 
+import com.fooock.shodan.model.banner.Banner;
+import com.fooock.shodan.model.banner.BannerDeserializer;
 import com.fooock.shodan.model.dns.DnsHostname;
 import com.fooock.shodan.model.dns.DnsHostnameDeserializer;
 import com.fooock.shodan.model.dns.DnsIp;
@@ -121,6 +123,9 @@ class ServiceCreator {
         Type facetReportType = new TypeToken<FacetReport>() {
         }.getType();
 
+        Type bannerType = new TypeToken<List<Banner>>() {
+        }.getType();
+
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(exploitType, new ExploitDeserializer())
                 .registerTypeAdapter(dnsIpType, new DnsIpDeserializer())
@@ -128,6 +133,7 @@ class ServiceCreator {
                 .registerTypeAdapter(protocolType, new ProtocolDeserializer())
                 .registerTypeAdapter(httpHeaderType, new HttpHeaderDeserializer())
                 .registerTypeAdapter(facetReportType, new FacetReportDeserializer())
+                .registerTypeAdapter(bannerType, new BannerDeserializer())
                 .create();
 
         final Retrofit retrofit = new Retrofit.Builder()

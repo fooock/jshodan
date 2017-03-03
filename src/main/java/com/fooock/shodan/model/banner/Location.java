@@ -31,6 +31,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Location {
 
+    @SerializedName("area_code")
     private int areaCode;
 
     private double latitude;
@@ -129,6 +130,46 @@ public class Location {
      */
     public String getCountryName() {
         return countryName;
+    }
+
+    void setAreaCode(int areaCode) {
+        this.areaCode = areaCode;
+    }
+
+    void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    void setCity(String city) {
+        this.city = city;
+    }
+
+    void setRegionCode(String regionCode) {
+        this.regionCode = regionCode;
+    }
+
+    void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    void setDmaCode(String dmaCode) {
+        this.dmaCode = dmaCode;
+    }
+
+    void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
+    void setCountryCode3(String countryCode3) {
+        this.countryCode3 = countryCode3;
+    }
+
+    void setCountryName(String countryName) {
+        this.countryName = countryName;
     }
 
     @Override
