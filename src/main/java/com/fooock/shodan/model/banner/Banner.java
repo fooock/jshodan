@@ -40,6 +40,8 @@ public class Banner {
 
     private String asn;
     private String data;
+
+    @SerializedName("ip_str")
     private String ipStr;
     private String ipv6;
     private String timestamp;
@@ -54,6 +56,12 @@ public class Banner {
 
     @SerializedName("_shodan")
     private Metadata metadata;
+
+    // ssl info
+    private boolean isSslEnabled;
+
+    @SerializedName("ssl")
+    private SslInfo sslInfo;
 
     // Optional properties
     private int uptime;
@@ -75,6 +83,13 @@ public class Banner {
 
     Banner() {
 
+    }
+
+    /**
+     * @return If the service uses SSL, such as HTTPS, this method returns true, otherwise return false
+     */
+    public boolean isSslEnabled() {
+        return isSslEnabled;
     }
 
     /**
@@ -254,6 +269,23 @@ public class Banner {
      */
     public String getTransport() {
         return transport;
+    }
+
+    /**
+     * Check if the ssl info is available using the {@link #isSslEnabled()} method
+     *
+     * @return Ssl info for this service, if available
+     */
+    public SslInfo getSslInfo() {
+        return sslInfo;
+    }
+
+    void setSslEnabled(boolean sslEnabled) {
+        isSslEnabled = sslEnabled;
+    }
+
+    void setSslInfo(SslInfo sslInfo) {
+        this.sslInfo = sslInfo;
     }
 
     void setPort(int port) {

@@ -60,6 +60,7 @@ public class BannerDeserializer implements JsonDeserializer<List<Banner>> {
             JsonElement location = jsonObject.get("location");
             JsonElement options = jsonObject.get("opts");
             JsonElement metadata = jsonObject.get("_shodan");
+            JsonElement ssl = jsonObject.get("ssl");
 
             JsonElement uptime = jsonObject.get("uptime");
             JsonElement link = jsonObject.get("link");
@@ -262,6 +263,90 @@ public class BannerDeserializer implements JsonDeserializer<List<Banner>> {
                 }
             }
             banner.setMetadata(shodanMetadata);
+
+            final SslInfo sslInfo = new SslInfo();
+            if (ssl == null || ssl.isJsonNull()) {
+                banner.setSslEnabled(false);
+            } else {
+                banner.setSslEnabled(true);
+
+                JsonObject sslAsJsonObject = ssl.getAsJsonObject();
+                JsonElement chain = sslAsJsonObject.get("chain");
+                JsonArray chainAsJsonArray = chain.getAsJsonArray();
+                String[] chainArray = new String[chainAsJsonArray.size()];
+                for (int i = 0; i < chainAsJsonArray.size(); i++) {
+                    chainArray[i] = chainAsJsonArray.get(i).getAsString();
+                }
+                sslInfo.setChain(chainArray);
+
+                JsonElement versions = sslAsJsonObject.get("versions");
+                JsonArray versionAsJsonArray = versions.getAsJsonArray();
+                String[] versionsArray = new String[versionAsJsonArray.size()];
+                for (int i = 0; i < versionsArray.length; i++) {
+                    versionsArray[i] = versionAsJsonArray.get(i).getAsString();
+                }
+                sslInfo.setVersions(versionsArray);
+
+                JsonElement cipher = sslAsJsonObject.get("cipher");
+                JsonObject cipherAsJsonObject = cipher.getAsJsonObject();
+                JsonElement bits = cipherAsJsonObject.get("bits");
+                JsonElement cipherVersion = cipherAsJsonObject.get("version");
+                JsonElement name = cipherAsJsonObject.get("name");
+
+                final Cipher cipherObject = new Cipher();
+                if (bits != null && !bits.isJsonNull()) {
+                    cipherObject.setBits(bits.getAsInt());
+                }
+                if (cipherVersion != null && !cipherVersion.isJsonNull()) {
+                    cipherObject.setVersion(cipherVersion.getAsString());
+                } else {
+                    cipherObject.setVersion("unknown");
+                }
+                if (name == null || name.isJsonNull()) {
+                    cipherObject.setName("unknown");
+                } else {
+                    cipherObject.setName(name.getAsString());
+                }
+                sslInfo.setCipher(cipherObject);
+
+                JsonElement dhparams = sslAsJsonObject.get("dhparams");
+                if (dhparams != null && !dhparams.isJsonNull()) {
+                    JsonObject dhparamsAsJsonObject = dhparams.getAsJsonObject();
+
+                    JsonElement bits1 = dhparamsAsJsonObject.get("bits");
+                    JsonElement prime = dhparamsAsJsonObject.get("prime");
+                    JsonElement publicKey = dhparamsAsJsonObject.get("public_key");
+                    JsonElement generator = dhparamsAsJsonObject.get("generator");
+                    JsonElement fingerprint = dhparamsAsJsonObject.get("fingerprint");
+
+                    final DiffieHellmanParams diffieHellmanParams = new DiffieHellmanParams();
+                    if (bits1 != null && !bits1.isJsonNull()) {
+                        diffieHellmanParams.setBits(bits1.getAsInt());
+                    }
+                    if (prime == null || prime.isJsonNull()) {
+                        diffieHellmanParams.setPrime("unknown");
+                    } else {
+                        diffieHellmanParams.setPrime(prime.getAsString());
+                    }
+                    if (publicKey == null || publicKey.isJsonNull()) {
+                        diffieHellmanParams.setPublicKey("unknown");
+                    } else {
+                        diffieHellmanParams.setPublicKey(publicKey.getAsString());
+                    }
+                    if (generator == null || generator.isJsonNull()) {
+                        diffieHellmanParams.setGenerator("unknown");
+                    } else {
+                        diffieHellmanParams.setGenerator(generator.getAsString());
+                    }
+                    if (fingerprint == null || fingerprint.isJsonNull()) {
+                        diffieHellmanParams.setFingerprint("unknown");
+                    } else {
+                        diffieHellmanParams.setFingerprint(fingerprint.getAsString());
+                    }
+                    sslInfo.setDiffieHellmanParams(diffieHellmanParams);
+                }
+            }
+            banner.setSslInfo(sslInfo);
 
             if (uptime == null || uptime.isJsonNull()) {
                 banner.setUptime(0);
