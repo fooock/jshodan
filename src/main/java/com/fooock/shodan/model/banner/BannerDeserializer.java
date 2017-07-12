@@ -168,7 +168,7 @@ public class BannerDeserializer implements JsonDeserializer<List<Banner>> {
                     locationObject.setLatitude(latitude.getAsDouble());
                 }
 
-                if (longitude == null || location.isJsonNull()) {
+                if (longitude == null || longitude.isJsonNull()) {
                     locationObject.setLongitude(0.0);
                 } else {
                     locationObject.setLongitude(longitude.getAsDouble());
