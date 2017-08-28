@@ -11,7 +11,7 @@ apply plugin: 'java'
 apply plugin: 'maven-publish'
 
 group 'com.fooock'
-version '0.4.7'
+version '0.4.8'
 
 sourceCompatibility = 1.7
 
@@ -43,7 +43,7 @@ bintray {
         issueTrackerUrl = 'https://github.com/fooock/jshodan/issues'
 
         version {
-            name = '0.4.7'
+            name = '0.4.8'
             gpg {
                 sign = true
                 passphrase = project.hasProperty('gpgpassword') ? project.property('gpgpassword') : System.getenv('BINTRAY_GPG')
