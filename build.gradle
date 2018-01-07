@@ -13,7 +13,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'org.sonarqube'
 
 group 'com.fooock'
-version '0.4.8'
+version '0.4.9'
 
 sourceCompatibility = 1.7
 
@@ -45,7 +45,7 @@ bintray {
         issueTrackerUrl = 'https://github.com/fooock/jshodan/issues'
 
         version {
-            name = '0.4.8'
+            name = '0.4.9'
             gpg {
                 sign = true
                 passphrase = project.hasProperty('gpgpassword') ? project.property('gpgpassword') : System.getenv('BINTRAY_GPG')
