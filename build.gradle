@@ -1,6 +1,7 @@
 buildscript {
     dependencies {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
+        classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.1'
     }
 }
 
@@ -9,6 +10,7 @@ plugins {
 }
 apply plugin: 'java'
 apply plugin: 'maven-publish'
+apply plugin: 'org.sonarqube'
 
 group 'com.fooock'
 version '0.4.8'
