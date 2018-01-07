@@ -1,11 +1,11 @@
 buildscript {
     dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
     }
 }
 
 plugins {
-    id "com.jfrog.bintray" version "1.7.3"
+    id "com.jfrog.bintray" version "1.8.0"
 }
 apply plugin: 'java'
 apply plugin: 'maven-publish'
@@ -102,7 +102,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:2.9.0"
     testCompile 'com.squareup.retrofit2:retrofit-mock:2.3.0'
-
 }
 
 task wrapper(type: Wrapper) {
