@@ -1,17 +1,19 @@
 buildscript {
     dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
+        classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.1'
     }
 }
 
 plugins {
-    id "com.jfrog.bintray" version "1.7.3"
+    id "com.jfrog.bintray" version "1.8.0"
 }
 apply plugin: 'java'
 apply plugin: 'maven-publish'
+apply plugin: 'org.sonarqube'
 
 group 'com.fooock'
-version '0.4.8'
+version '0.4.9'
 
 sourceCompatibility = 1.7
 
@@ -43,7 +45,7 @@ bintray {
         issueTrackerUrl = 'https://github.com/fooock/jshodan/issues'
 
         version {
-            name = '0.4.8'
+            name = '0.4.9'
             gpg {
                 sign = true
                 passphrase = project.hasProperty('gpgpassword') ? project.property('gpgpassword') : System.getenv('BINTRAY_GPG')
@@ -96,15 +98,14 @@ publishing {
 dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-    compile "io.reactivex.rxjava2:rxjava:2.1.3"
+    compile "io.reactivex.rxjava2:rxjava:2.1.8"
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
 
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:2.9.0"
     testCompile 'com.squareup.retrofit2:retrofit-mock:2.3.0'
-
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.1'
+    gradleVersion = '4.1'
 }
