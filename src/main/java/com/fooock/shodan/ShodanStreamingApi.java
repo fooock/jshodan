@@ -60,7 +60,7 @@ public final class ShodanStreamingApi extends AbstractApi {
      */
     public Observable<BannerReport> alert(String id) {
         if (id == null || id.isEmpty()) {
-            throw new IllegalArgumentException("Id con't be null or empty");
+            throw new IllegalArgumentException("Id can't be null or empty");
         }
         return streamingService.alert(id, apiKey);
     }
